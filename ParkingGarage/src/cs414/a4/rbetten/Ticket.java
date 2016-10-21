@@ -6,7 +6,6 @@ public class Ticket {
 	
 	private LocalDateTime checkinTime;
 	private LocalDateTime checkoutTime;
-	private boolean paymentStatus = false;
 	
 	
 	public Ticket(LocalDateTime checkinTime)
@@ -25,16 +24,6 @@ public class Ticket {
 		{
 			this.checkoutTime = ldt;
 		}
-	}
-	
-	public void setPaymentStatus(boolean status)
-	{
-		this.paymentStatus = status;
-	}
-	
-	public boolean getPaymentStatus()
-	{
-		return this.paymentStatus;
 	}
 	
 	@Override
