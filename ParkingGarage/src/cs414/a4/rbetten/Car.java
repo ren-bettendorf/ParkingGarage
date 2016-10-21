@@ -19,7 +19,6 @@ public class Car{
 	
 	public boolean payForTicket()
 	{
-		
 		return false;
 	}
 	
@@ -34,6 +33,6 @@ public class Car{
 	@Override
 	public String toString()
 	{
-		return String.valueOf(carID);
+		return String.valueOf(carID + ":" + ticket + ":" + paymentStatus);
 	}
 }
