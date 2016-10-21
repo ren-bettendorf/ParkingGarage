@@ -1,7 +1,5 @@
 package cs414.a4.rbetten;
 
-import static org.junit.Assert.*;
-
 import java.time.LocalDateTime;
 
 import org.junit.Assert;
@@ -32,6 +30,12 @@ public class TicketTest {
 	@Test
 	public void notEqualTickets() {
 		Assert.assertFalse(ticket1.equals(ticket3));
+	}
+	
+	@Test
+	public void nullEqualTickets() {
+		Ticket nullTicket = null;
+		Assert.assertTrue(!ticket1.equals(nullTicket));
 	}
 
 }

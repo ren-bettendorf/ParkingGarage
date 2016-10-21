@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 public class Ticket {
 	
 	private LocalDateTime checkinTime;
-	private LocalDateTime checkoutTime;
 	
 	
 	public Ticket(LocalDateTime checkinTime)
@@ -16,14 +15,6 @@ public class Ticket {
 	public LocalDateTime getCheckinTime()
 	{
 		return checkinTime;
-	}
-	
-	public void setCheckoutTime(LocalDateTime ldt)
-	{
-		if(checkinTime.compareTo(ldt) < 0)
-		{
-			this.checkoutTime = ldt;
-		}
 	}
 	
 	@Override
