@@ -3,7 +3,6 @@ package cs414.a4.rbetten;
 public class Car{
 
 	private int carID;
-	private boolean paymentStatus = false;
 	Ticket ticket;
 
 	public Car(int carID, Ticket ticket)
@@ -19,6 +18,11 @@ public class Car{
 	
 	public boolean payForTicket()
 	{
+		if(ticket.getPaymentStatus() == false)
+		{
+			
+		}
+		
 		return false;
 	}
 	
@@ -33,6 +37,6 @@ public class Car{
 	@Override
 	public String toString()
 	{
-		return String.valueOf(carID + ":" + ticket + ":" + paymentStatus);
+		return String.valueOf(carID + ":" + ticket);
 	}
 }

@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 public class Ticket {
 	
 	private LocalDateTime checkinTime;
+	private boolean paymentStatus = false;
 	
 	
 	public Ticket(LocalDateTime checkinTime)
@@ -16,7 +17,16 @@ public class Ticket {
 	{
 		return checkinTime;
 	}
+
 	
+	public boolean getPaymentStatus() {
+		return paymentStatus;
+	}
+
+	public void setPaymentStatus(boolean paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Ticket) {
