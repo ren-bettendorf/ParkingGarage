@@ -15,7 +15,7 @@ public class EntryGate {
 	
 	public void attemptCheckinCar()
 	{
-		if( !garage.checkGarageFull() )
+		if( garage.checkGarageSpace() )
 		{
 			Car car = new Car(garage.getCarIdentifier(), dispenseTicket());
 			garage.addCarToGarage(car);

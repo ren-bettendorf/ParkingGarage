@@ -19,18 +19,23 @@ public class Ticket {
 	}
 
 	
-	public boolean getPaymentStatus() {
+	public boolean getPaymentStatus() 
+	{
 		return paymentStatus;
 	}
 
-	public void setPaymentStatus(boolean paymentStatus) {
+	public void setPaymentStatus(boolean paymentStatus) 
+	{
 		this.paymentStatus = paymentStatus;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Ticket) {
-			return checkinTime.equals(((Ticket) obj).getCheckinTime());
+	public boolean equals(Object obj) 
+	{
+		if(!(obj == null) && obj instanceof Ticket) 
+		{
+			Ticket tic = (Ticket)obj;
+			return this.checkinTime.equals(tic.getCheckinTime());
 		}
 		return false;
 	}

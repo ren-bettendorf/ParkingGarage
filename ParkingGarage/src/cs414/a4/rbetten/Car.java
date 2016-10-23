@@ -16,15 +16,11 @@ public class Car{
 		return carID;
 	}
 	
-	public boolean payForTicket()
+	public Ticket getTicket()
 	{
-		if(ticket.getPaymentStatus() == false)
-		{
-			
-		}
-		
-		return false;
+		return ticket;
 	}
+	
 	
 	@Override
 	public boolean equals(Object obj) {
