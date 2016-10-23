@@ -13,7 +13,7 @@ public class EntryGate {
 		this.garage = garage;
 	}
 	
-	public void attemptCheckinCar()
+	public void checkinCar()
 	{
 		if( garage.checkGarageSpace() )
 		{
