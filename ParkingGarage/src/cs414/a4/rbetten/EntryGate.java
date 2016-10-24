@@ -16,7 +16,7 @@ public class EntryGate {
 	public Ticket checkinCar()
 	{
 		Ticket ticket = null;
-		if( garage.checkGarageSpace() )
+		if( !garage.checkGarageSpace() )
 		{
 			ticket = new Ticket(LocalDateTime.now());
 			Car car = new Car(garage.getCarIdentifier(), ticket);

@@ -24,7 +24,7 @@ public class ParkingGarageJFrame implements ActionListener
     
     private JLabel errorLabel;
     
-    private JLabel entranceCarID, entranceTicketLabel;
+    private JLabel entranceTicketLabel;
     
     private JLabel exitTicketLabel;
 
@@ -37,6 +37,7 @@ public class ParkingGarageJFrame implements ActionListener
     	occupancyLabel = new JLabel(garageOccupancyPrefix);
         maxOccupancyLabel = new JLabel(maxOccupancyPrefix);
         errorLabel = new JLabel(errorStringPrefix);
+        entranceTicketLabel = new JLabel("");
         /*
          * An easy way to put space between a top-level container
          * and its contents is to put the contents in a JPanel
@@ -45,8 +46,7 @@ public class ParkingGarageJFrame implements ActionListener
         JPanel pane = new JPanel(new GridBagLayout());
         
         userInitGarage();
-    	
-        createEntryButton();
+    	createEntryButton();
         createExitButton();
         createAdminButton();
         
@@ -95,11 +95,6 @@ public class ParkingGarageJFrame implements ActionListener
         
         constraints.gridx = 0;
         constraints.gridy = 2;
-        pane.add(entranceCarID, constraints);
-        
-        
-        constraints.gridx = 0;
-        constraints.gridy = 3;
         pane.add(entranceTicketLabel, constraints);
         
         pane.setBorder(BorderFactory.createEmptyBorder(
@@ -120,7 +115,6 @@ public class ParkingGarageJFrame implements ActionListener
     
     private void showEntranceGateScene(boolean status)
     {
-    	entranceCarID.setVisible(status);
     	entranceTicketLabel.setVisible(status);
     }
     
@@ -188,25 +182,41 @@ public class ParkingGarageJFrame implements ActionListener
     	} 
     	else if(e.getSource() == entryButton)
     	{
-    		if(garage.checkGarageSpace())
-    		{
-    			EntryGate gate = garage.getEntranceGate();
-    			Ticket ticket = gate.checkinCar();
-    			entranceTicketLabel.setText("Ticket Number: " + ticket.getCheckinTime());
-    			showEntranceGateScene(true);
-    			updateOccupancyLabel();
-    		}
+    		entranceGateInput();
     	}
     	else if(e.getSource() == exitButton)
     	{
     		ExitGate gate = garage.getExitGate();
     		Car placeholder = new Car(0, new Ticket(LocalDateTime.now()));
     		gate.attemptCheckoutCar(placeholder);
+    		
+
+			showEntranceGateScene(false);
+			showExitGateScene(true);
+			showAdminScene(false);
     	}
     	else if(e.getSource() == adminButton)
     	{
-    		
+
+			showEntranceGateScene(false);
+			showExitGateScene(false);
+			showAdminScene(true);
     	}
+    }
+    
+    private void entranceGateInput()
+    {
+    	if( !garage.checkGarageSpace() )
+		{
+			EntryGate gate = garage.getEntranceGate();
+			Ticket ticket = gate.checkinCar();
+			entranceTicketLabel.setText("Ticket Number: " + ticket.getUniqueID());
+			
+			updateOccupancyLabel();
+			showEntranceGateScene(true);
+			showExitGateScene(false);
+			showAdminScene(false);
+		}
     }
     
     private void maxOccupancyInput()
