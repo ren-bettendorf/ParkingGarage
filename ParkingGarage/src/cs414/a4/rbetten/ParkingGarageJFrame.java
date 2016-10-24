@@ -23,6 +23,8 @@ public class ParkingGarageJFrame implements ActionListener
     private static String invalidOccupancyInput = "Please enter integer greater than 0";
     
     private JLabel errorLabel;
+	
+	private JLabel garageVacancyLabel;
     
     private JLabel entranceTicketLabel, entranceGateStatusLabel;
     private JLabel exitTicketLabel, exitGateStatusLabel;
@@ -77,35 +79,34 @@ public class ParkingGarageJFrame implements ActionListener
        	constraints.gridy = 0;
         pane.add(occupancyLabel, constraints);
         
+		constraints.gridx = 0;
+		constraints.gridy = 1;
+		pane.add(entranceGateStatusLabel, constraints);
+		
+		constraints.gridx = 1;
+		constraints.gridy = 1;
+		pane.add(exitGateStatusLabel, constraints);
+		
+		
         constraints.gridx = 0;
-        constraints.gridy = 1;
+        constraints.gridy = 2;
         pane.add(entryButton, constraints);
         
         constraints.gridx = 1;
-        constraints.gridy = 1;
+        constraints.gridy = 2;
         pane.add(exitButton, constraints);
         
         constraints.gridx = 2;
         constraints.gridy = 1;
         pane.add(adminButton, constraints);
         
-        constraints.gridx = 0;
-        constraints.gridy = 2;
-        pane.add(errorLabel, constraints);
-        errorLabel.setVisible(false);
-        
-		constraints.gridx = 0;
-		constraints.gridy = 2;
-		pane.add(entranceGateStatusLabel, constraints);
-		entranceGateStatusLabel.setVisible(false);
-		
-		constraints.gridx = 1;
-		constraints.gridy = 2;
-		pane.add(exitGateStatusLabel, constraints);
-		exitGateStatusLabel.setVisible(false);
+        // constraints.gridx = 0;
+        // constraints.gridy = 2;
+        // pane.add(errorLabel, constraints);
+        // errorLabel.setVisible(false);
 		
         constraints.gridx = 1;
-        constraints.gridy = 2;
+        constraints.gridy = 3;
         pane.add(entranceTicketLabel, constraints);
         
         pane.setBorder(BorderFactory.createEmptyBorder(
@@ -174,8 +175,10 @@ public class ParkingGarageJFrame implements ActionListener
     	{
     		updateOccupancyLabel();
     	}
+		entranceGateStatusLabel.setVisible(status);
     	entryButton.setVisible(status);
     	exitButton.setVisible(status);
+		exitGateStatusLabel.setVisible(status);
     	adminButton.setVisible(status);
     }
     
@@ -215,11 +218,22 @@ public class ParkingGarageJFrame implements ActionListener
     
     private void entranceGateInput()
     {
+		entranceGateStatusLabel.setText("Ticket has been requested.");
+		java.util.concurrent.TimeUnit.SECONDS.sleep(5);
+		
     	if( !garage.checkGarageSpace() )
 		{
 			EntryGate gate = garage.getEntranceGate();
+			entranceGateStatusLabel.setText("Garage has space. Gate opened.");
+			java.util.concurrent.TimeUnit.SECONDS.sleep(5);
+			
 			Ticket ticket = gate.checkinCar();
 			entranceTicketLabel.setText("Ticket Number: " + ticket.getUniqueID());
+			
+			entranceGateStatusLabel.setText("Driver enters garage.");
+			java.util.concurrent.TimeUnit.SECONDS.sleep(5);
+			
+			entranceGateStatusLabel.setText("Gate closes.");
 			
 			updateOccupancyLabel();
 			showEntranceGateScene(true);
@@ -228,7 +242,7 @@ public class ParkingGarageJFrame implements ActionListener
 		}
 		else
 		{
-			entranceTicketLabel.setText("Garage is full. Can't dispense ticket.");
+			entranceGateStatusLabel.setText("Garage is full. Can't dispense ticket.");
 		}
     }
     
