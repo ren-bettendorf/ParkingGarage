@@ -5,6 +5,8 @@ import java.util.HashSet;
 public class ParkingGarage
 {
 	private HashSet<Car> carsInGarage = new HashSet<Car>();
+	private EntryGate entryGate;
+	private ExitGate exitGate;
 	private int maxOccupancy;
 	private int carIdentifier = 1;
 	private RecordPayments payments = new RecordPayments();
@@ -12,6 +14,8 @@ public class ParkingGarage
 	public ParkingGarage(int maxOccu)
 	{
 		this.maxOccupancy = maxOccu;
+		this.entryGate = new EntryGate("Entrance Gate", this);
+		this.exitGate = new ExitGate("Exit Gate", this);
 	}
 	
 	public boolean checkGarageSpace()
@@ -21,6 +25,26 @@ public class ParkingGarage
 			return true;
 		}
 		return false;
+	}
+	
+	public int getMaxCarOccupancy()
+	{
+		return maxOccupancy;
+	}
+	
+	public EntryGate getEntranceGate()
+	{
+		return entryGate;
+	}
+	
+	public ExitGate getExitGate()
+	{
+		return exitGate;
+	}
+	
+	public int getCarOccupancy()
+	{
+		return carsInGarage.size();
 	}
 	
 	public int getCarIdentifier()
