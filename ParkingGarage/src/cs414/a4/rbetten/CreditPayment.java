@@ -6,7 +6,6 @@ public class CreditPayment extends Payment
 {
 	private String cardNumber;
 	private String expirationDate;
-	private Date dateOfPayment;
 	
 	public CreditPayment(String cardNumber, String expirationDate, double amountPaid, Date dateOfPayment)
 	{

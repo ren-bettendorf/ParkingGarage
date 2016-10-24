@@ -10,7 +10,7 @@ public class Record {
 	private Month monthIn, monthOut;
 	private HashSet<Integer> hoursIn = new HashSet<Integer>();
 	
-	public Record(LocalDateTime checkin, LocalDateTime checkout)
+	public Record(LocalDateTime checkin, LocalDateTime checkout, Payment payment)
 	{
 		if(checkin.compareTo(checkout) > 0)
 		{

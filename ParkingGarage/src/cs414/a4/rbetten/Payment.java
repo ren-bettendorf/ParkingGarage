@@ -6,6 +6,7 @@ public abstract class Payment
 {
 	protected double amountPaid;
 	protected Date dateOfPayment;
+	
 	public double getAmountPaid()
 	{
 		return amountPaid;
