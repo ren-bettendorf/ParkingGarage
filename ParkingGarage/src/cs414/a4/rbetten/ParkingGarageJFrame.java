@@ -187,9 +187,7 @@ public class ParkingGarageJFrame implements ActionListener
     	else if(e.getSource() == exitButton)
     	{
     		ExitGate gate = garage.getExitGate();
-    		Car placeholder = new Car(0, new Ticket(LocalDateTime.now()));
-    		gate.attemptCheckoutCar(placeholder);
-    		
+    		    		
 
 			showEntranceGateScene(false);
 			showExitGateScene(true);
