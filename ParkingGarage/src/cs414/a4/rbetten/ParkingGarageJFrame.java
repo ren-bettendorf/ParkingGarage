@@ -24,9 +24,8 @@ public class ParkingGarageJFrame implements ActionListener
     
     private JLabel errorLabel;
     
-    private JLabel entranceTicketLabel;
-    
-    private JLabel exitTicketLabel;
+    private JLabel entranceTicketLabel, entranceGateStatusLabel;
+    private JLabel exitTicketLabel, exitGateStatusLabel;
 
     //Specify the look and feel to use.  Valid values:
     //null (use the default), "Metal", "System", "Motif", "GTK+"
@@ -38,6 +37,8 @@ public class ParkingGarageJFrame implements ActionListener
         maxOccupancyLabel = new JLabel(maxOccupancyPrefix);
         errorLabel = new JLabel(errorStringPrefix);
         entranceTicketLabel = new JLabel("");
+		entranceGateStatusLabel = new JLabel("CLOSED");
+		exitGateStatusLabel = new JLabel("CLOSED");
         /*
          * An easy way to put space between a top-level container
          * and its contents is to put the contents in a JPanel
@@ -93,7 +94,17 @@ public class ParkingGarageJFrame implements ActionListener
         pane.add(errorLabel, constraints);
         errorLabel.setVisible(false);
         
-        constraints.gridx = 0;
+		constraints.gridx = 0;
+		constraints.gridy = 2;
+		pane.add(entranceGateStatusLabel, constraints);
+		entranceGateStatusLabel.setVisible(false);
+		
+		constraints.gridx = 1;
+		constraints.gridy = 2;
+		pane.add(exitGateStatusLabel, constraints);
+		exitGateStatusLabel.setVisible(false);
+		
+        constraints.gridx = 1;
         constraints.gridy = 2;
         pane.add(entranceTicketLabel, constraints);
         
@@ -215,6 +226,10 @@ public class ParkingGarageJFrame implements ActionListener
 			showExitGateScene(false);
 			showAdminScene(false);
 		}
+		else
+		{
+			entranceTicketLabel.setText("Garage is full. Can't dispense ticket.");
+		}
     }
     
     private void maxOccupancyInput()
@@ -225,7 +240,6 @@ public class ParkingGarageJFrame implements ActionListener
 	        maxOccupancy = Integer.parseInt(userInput);
 	        if(maxOccupancy < 1)
 	        {
-	        	maxOccupancyField = new JTextField(10);
 	        	errorLabel.setText(errorStringPrefix + invalidOccupancyInput);
 	        	errorLabel.setVisible(true);
 	        } 
@@ -238,7 +252,6 @@ public class ParkingGarageJFrame implements ActionListener
 	    }
 	    catch(NumberFormatException ex)
 	    {
-	    	maxOccupancyField = new JTextField(5);
         	errorLabel.setText(errorStringPrefix + invalidOccupancyInput);
         	errorLabel.setVisible(true);
 	    }
