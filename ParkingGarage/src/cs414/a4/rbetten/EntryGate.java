@@ -13,17 +13,15 @@ public class EntryGate {
 		this.garage = garage;
 	}
 	
-	public void checkinCar()
+	public Ticket checkinCar()
 	{
+		Ticket ticket = null;
 		if( garage.checkGarageSpace() )
 		{
-			Car car = new Car(garage.getCarIdentifier(), dispenseTicket());
+			ticket = new Ticket(LocalDateTime.now());
+			Car car = new Car(garage.getCarIdentifier(), ticket);
 			garage.addCarToGarage(car);
 		}
-	}
-	
-	private Ticket dispenseTicket()
-	{
-		return new Ticket(LocalDateTime.now());
+		return ticket;
 	}
 }

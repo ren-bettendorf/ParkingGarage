@@ -23,6 +23,10 @@ public class ParkingGarageJFrame implements ActionListener
     private static String invalidOccupancyInput = "Please enter integer greater than 0";
     
     private JLabel errorLabel;
+    
+    private JLabel entranceCarID, entranceTicketLabel;
+    
+    private JLabel exitTicketLabel;
 
     //Specify the look and feel to use.  Valid values:
     //null (use the default), "Metal", "System", "Motif", "GTK+"
@@ -50,6 +54,9 @@ public class ParkingGarageJFrame implements ActionListener
         
         showMaxOccupancyScene(true);
         showParkingGarageScene(false);
+        showEntranceGateScene(false);
+        showExitGateScene(false);
+        showAdminScene(false);
         
         constraints.gridx = 0;
         constraints.gridy = 0;
@@ -86,12 +93,20 @@ public class ParkingGarageJFrame implements ActionListener
         pane.add(errorLabel, constraints);
         errorLabel.setVisible(false);
         
+        constraints.gridx = 0;
+        constraints.gridy = 2;
+        pane.add(entranceCarID, constraints);
+        
+        
+        constraints.gridx = 0;
+        constraints.gridy = 3;
+        pane.add(entranceTicketLabel, constraints);
+        
         pane.setBorder(BorderFactory.createEmptyBorder(
-                                        30, //top
-                                        80, //left
-                                        30, //bottom
-                                        80) //right
-                                        );
+        												30,   //top
+        												80,   //left
+        												30,   //bottom
+        												80)); //right
 
         return pane;
     }
@@ -103,7 +118,21 @@ public class ParkingGarageJFrame implements ActionListener
     	maxOccupancyField = new JTextField(10);
     }
     
-
+    private void showEntranceGateScene(boolean status)
+    {
+    	entranceCarID.setVisible(status);
+    	entranceTicketLabel.setVisible(status);
+    }
+    
+    private void showExitGateScene(boolean status)
+    {
+    	
+    }
+    
+    private void showAdminScene(boolean status)
+    {
+    	
+    }
     
     private void showMaxOccupancyScene(boolean status)
     {
@@ -159,14 +188,20 @@ public class ParkingGarageJFrame implements ActionListener
     	} 
     	else if(e.getSource() == entryButton)
     	{
-    		EntryGate gate = garage.getEntranceGate();
-    		gate.checkinCar();
+    		if(garage.checkGarageSpace())
+    		{
+    			EntryGate gate = garage.getEntranceGate();
+    			Ticket ticket = gate.checkinCar();
+    			entranceTicketLabel.setText("Ticket Number: " + ticket.getCheckinTime());
+    			showEntranceGateScene(true);
+    			updateOccupancyLabel();
+    		}
     	}
     	else if(e.getSource() == exitButton)
     	{
     		ExitGate gate = garage.getExitGate();
-    		Car placeholder = new Car(0, LocalDateTime.now());
-    		gate.attemptCheckoutCar(car);
+    		Car placeholder = new Car(0, new Ticket(LocalDateTime.now()));
+    		gate.attemptCheckoutCar(placeholder);
     	}
     	else if(e.getSource() == adminButton)
     	{
