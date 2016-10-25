@@ -20,7 +20,7 @@ public class ParkingGarageUI
     	garage = new ParkingGarage(maxOccupancy);
     	while(runApp)
 		{
-			int userChoice = displayUserChoiceMenu();
+			String userChoice = displayUserChoiceMenu();
 			evaluateUserChoice(userChoice);
 		}
     }
@@ -38,16 +38,16 @@ public class ParkingGarageUI
     	} while (maxOccupancy < 1);
 	}
 	
-    private static void evaluateUserChoice(int choice)
+    private static void evaluateUserChoice(String choice)
     {
     	System.out.println("\nEVALUATING USER CHOICE: " + choice);
     	switch(choice)
 		{
-			case 1:
+			case "1":
 				printOccupancyInfo();
 				
 				break;
-			case 2:
+			case "2":
 				if( !garage.checkGarageSpace() )
 				{
 					System.out.println("Space is available. Dispensing ticket");
@@ -65,25 +65,45 @@ public class ParkingGarageUI
 				}
 				
 				break;
-			case 3:
+			case "3":
 				System.out.println("Please enter ticket number.");
 				String ticketNumber = input.next();
 				if( garage.getExitGate().attemptCheckoutCar(ticketNumber) )
 				{
-					System.out.println("Ticket found. Please select an option to pay for ticket.");
-					System.out.println("1.. Cash Payment");
-					System.out.println("2.. Credit Payment");
-					
-					String userIn = input.next();
-					switch(userIn)
+					boolean validInput = true;
+					do
 					{
-						case "1":
-							break;
-						case "2":
-							break;
-						default:
-							System.out.println("Sorry but that isn't a valid option. Please try again.");
-					}
+						System.out.println("Ticket found. Please select an option to pay for ticket.");
+						System.out.println("1.. Cash Payment");
+						System.out.println("2.. Credit Payment");
+						
+						String userIn = input.next();
+						
+						
+						Payment payment;
+						switch(userIn)
+						{
+							case "1":
+								System.out.println("How much cash was inserted? ");
+								String amountPaid = input.next();
+								payment = new CashPayment();
+								
+								validInput = true;
+								break;
+							case "2":
+								System.out.println("Please enter the credit card number (no dashes): ");
+								String ccNumber = input.next();
+								System.out.println("Please enter the expiration date (mm/yyyy): ");
+								Date expDate = changeToDate(input.next());
+								payment = new CreditPayment(ccNumber, expDate, Date.);
+								
+								validInput = true;
+								break;
+							default:
+								System.out.println("Sorry but that isn't a valid option. Please try again.");
+								validInput = false;
+						}
+					}while ( !validInput )
 					
 //					System.out.println("Exit Gate Open.");
 //					System.out.println("Driver leaves garage.");
@@ -96,13 +116,13 @@ public class ParkingGarageUI
 				}
 				
 				break;
-			case 4: 
+			case "4": 
 			
 				break;
-			case 5:
+			case "5":
 			
 				break;
-			case 6:
+			case "6":
 				System.out.println("Exiting Application...");
 				runApp = false;
 				
@@ -129,27 +149,26 @@ public class ParkingGarageUI
 		}
 	}
     
-    private static int displayUserChoiceMenu()
+    private static String displayUserChoiceMenu()
     {
-    	int userChoice;
-    	do 
-    	{
-			System.out.println("\nGARAGE VACANCY STATUS " + garage.checkGarageSpace());
-			System.out.println("Please select one of the following options:");
+		System.out.println("\nGARAGE VACANCY STATUS " + garage.checkGarageSpace());
+		System.out.println("Please select one of the following options:");
 
-            System.out.println("1.. Display current availability.");
-            System.out.println("2.. Dispense a ticket.");
-            System.out.println("3.. Pay for ticket.");
-            System.out.println("4.. Administrator: Pay for lost or damaged ticket.");  
-            System.out.println("5.. Administrator Only: View usage reports.");
-            System.out.println("6.. Quit.\n");
-				
-    		
-    		userChoice = input.nextInt();
-			
-    	} while ( !(userChoice > 0 && userChoice < 7) );
-    	
+		System.out.println("1.. Display current availability.");
+		System.out.println("2.. Dispense a ticket.");
+		System.out.println("3.. Pay for ticket.");
+		System.out.println("4.. Administrator: Pay for lost or damaged ticket.");  
+		System.out.println("5.. Administrator Only: View usage reports.");
+		System.out.println("6.. Quit.\n");
+		
+		String userChoice = input.next();
+		
     	return userChoice;
     	
     }
+	
+	private static Date changeToDate(String stringToChange)
+	{
+		return new Date();
+	}
 }
