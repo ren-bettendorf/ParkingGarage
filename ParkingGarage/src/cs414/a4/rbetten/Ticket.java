@@ -13,7 +13,9 @@ public class Ticket {
 	public Ticket(LocalDateTime checkinTime)
 	{
 		this.checkinTime = checkinTime;
-		this.uniqueID = checkinTime.toString().replaceAll("[^0-9]", "");
+		uniqueID = checkinTime.toString().replaceAll("[^0-9]", "");
+		// Trim off the milliseconds
+		uniqueID = uniqueID.substring(0, uniqueID.size()-4);
 	}
 	
 	public LocalDateTime getCheckinTime()
