@@ -23,13 +23,13 @@ public class ExitGate {
 		
 	}
 	
-	public void attemptCheckoutCar(Car car)
+	public void attemptCheckoutCar(Ticket ticket)
 	{
-		if( car.getTicket().getPaymentStatus() )
+		if( ticket.getPaymentStatus() )
 		{
-			payForTicket( car.getTicket() );
+			payForTicket( ticket );
 		}
-		garage.removeCarFromGarage(car);
+		garage.removeCarFromGarage(ticket);
 	}
 	
 }

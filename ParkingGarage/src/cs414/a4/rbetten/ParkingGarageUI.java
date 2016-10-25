@@ -7,11 +7,11 @@ public class ParkingGarageUI
 	static Scanner input = new Scanner(System.in);
 	static ParkingGarage garage;
 	static int maxOccupancy;
-	boolean runApp = true;
+	static boolean runApp = true;
 	
     public static void main(String[] args) 
     {
-    	System.out.println("Parking Garage Application has started. "
+    	System.out.println("Parking Garage Application has started. ");
 		System.out.println("Before we officially begin though we need to get the size of the Garage.");
 		System.out.println("It is important this is a positive integer!");
     	
@@ -25,7 +25,7 @@ public class ParkingGarageUI
 		}
     }
     
-	private void inputGarageSize()
+	private static void inputGarageSize()
 	{
 		do 
     	{	
@@ -40,6 +40,7 @@ public class ParkingGarageUI
 	
     private static void evaluateUserChoice(int choice)
     {
+    	System.out.println("\nEVALUATING USER CHOICE: " + choice);
     	switch(choice)
 		{
 			case 1:
@@ -107,24 +108,20 @@ public class ParkingGarageUI
     	int userChoice;
     	do 
     	{
-    		do
-    		{
-				System.out.println("Please select one of the following options: \n");
-				System.out.println("GARAGE VACANCY STATUS " + garage.checkGarageSpace());
-				System.out.println("");
+			System.out.println("\nGARAGE VACANCY STATUS " + garage.checkGarageSpace());
+			System.out.println("Please select one of the following options:");
+
+            System.out.println("1.. Display current availability.");
+            System.out.println("2.. Dispense a ticket.");
+            System.out.println("3.. Pay for ticket.");
+            System.out.println("4.. Administrator: Pay for lost or damaged ticket.");  
+            System.out.println("5.. Administrator Only: View usage reports.");
+            System.out.println("6.. Quit.\n");
 				
-                System.out.println("1.. Display current availability.");
-                System.out.println("2.. Dispense a ticket.");
-                System.out.println("3.. Pay for ticket.");
-                System.out.println("4.. Administrator: Pay for lost or damaged ticket.");  
-                System.out.println("5.. Administrator Only: View usage reports.");
-                System.out.println("6.. Quit.\n");
-				
-    		} while ( !input.hasNextInt() );
-			
+    		
     		userChoice = input.nextInt();
 			
-    	} while (userChoice > 0 && userChoice < 7);
+    	} while ( !(userChoice > 0 && userChoice < 7) );
     	
     	return userChoice;
     	

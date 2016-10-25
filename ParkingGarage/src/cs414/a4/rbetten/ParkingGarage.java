@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 public class ParkingGarage
 {
-	private HashSet<Car> carsInGarage = new HashSet<Car>();
+	private HashSet<Ticket> carsInGarage = new HashSet<Ticket>();
 	private EntryGate entryGate;
 	private ExitGate exitGate;
 	private int maxOccupancy;
@@ -52,16 +52,15 @@ public class ParkingGarage
 		return carIdentifier;
 	}
 	
-	public void addCarToGarage(Car car)
+	public void addCarToGarage(Ticket ticket)
 	{
-		carsInGarage.add(car);
-		carIdentifier++;
+		carsInGarage.add(ticket);
 	}
 	
-	public void removeCarFromGarage(Car car)
+	public void removeCarFromGarage(Ticket ticket)
 	{
-		carsInGarage.remove(car);
-		payments.addRecord(car.getTicket());
+		carsInGarage.remove(ticket);
+		payments.addRecord(ticket);
 		
 	}
 	
