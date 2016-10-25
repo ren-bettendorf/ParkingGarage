@@ -12,10 +12,10 @@ public class ParkingGarageUI
     {
     	System.out.print("Parking Garage Application has started. "
 				  + "Before we officially begin though we need to get the size of the Garage.\n");
+		System.out.println("It is important this is a positive integer!");
     	
     	do 
     	{	
-    		System.out.println("It is important this is a positive integer!");
     		while ( !input.hasNextInt() ) 
     		{
     			System.out.println("Sorry but that isn't a positive integer. Try again!");
@@ -40,9 +40,9 @@ public class ParkingGarageUI
     	int userChoice;
     	do 
     	{
+    		System.out.println("Please select one of the following options: \n");
     		while ( !input.hasNextInt() ) 
     		{
-        		System.out.println("Please select one of the following options: \n");
                 System.out.println("1.. Display current availability.");
                 System.out.println("2.. Dispense a ticket.");
                 System.out.println("3.. Pay for ticket.");
