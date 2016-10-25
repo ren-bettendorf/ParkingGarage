@@ -1,10 +1,12 @@
-package cs414.a4.rbetten;
+package cs414.a4.rbetten.test;
 
 import java.time.LocalDateTime;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import cs414.a4.rbetten.Ticket;
 
 public class TicketTest {
 

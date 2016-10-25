@@ -11,13 +11,13 @@ public class AdminPayment
 	public AdminPayment(String userAddress, String userName, String userPhoneNumber, double amountOwed, Date dateOwed)
 	{
 		this.userAddress = userAddress;
-		this.expirationDate = expirationDate;
+		this.userName = userName;
 		this.userPhoneNumber = userPhoneNumber;
 		this.amountOwed = amountOwed;
 		this.dateOwed = dateOwed;
 	}
 	
-	public String getAmountOwed()
+	public double getAmountOwed()
 	{
 		return amountOwed;
 	}

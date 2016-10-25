@@ -1,10 +1,12 @@
-package cs414.a4.rbetten;
+package cs414.a4.rbetten.test;
 
 import java.time.LocalDateTime;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import cs414.a4.rbetten.Record;
 
 public class RecordTest {
 
@@ -18,14 +20,14 @@ public class RecordTest {
 		firstLDT = LocalDateTime.now();
 		secondLDT = LocalDateTime.now();
 		
-		firstRecord = new Record(firstLDT, secondLDT);
-		secondRecord =  new Record(firstLDT, secondLDT);
+		firstRecord = new Record(firstLDT, secondLDT, null);
+		secondRecord =  new Record(firstLDT, secondLDT, null);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void improperInstance() {
 		@SuppressWarnings("unused")
-		Record record = new Record(secondLDT, firstLDT);
+		Record record = new Record(secondLDT, firstLDT, null);
 	}
 	
 	@Test

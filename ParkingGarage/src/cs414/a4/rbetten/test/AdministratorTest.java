@@ -1,11 +1,11 @@
-package cs414.a4.rbetten;
+package cs414.a4.rbetten.test;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class CarTest {
+public class AdministratorTest {
 
 	@Before
 	public void setUp() throws Exception {

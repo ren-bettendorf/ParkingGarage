@@ -15,6 +15,12 @@ public class EntryGate {
 	
 	public Ticket checkinCar()
 	{
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Ticket ticket = null;
 		if( !garage.checkGarageSpace() )
 		{

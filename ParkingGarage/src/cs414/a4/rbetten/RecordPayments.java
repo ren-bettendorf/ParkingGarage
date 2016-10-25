@@ -13,7 +13,7 @@ public class RecordPayments {
 	
 	public void addRecord(Ticket ticket)
 	{
-		Record record = new Record(ticket.getCheckinTime(), LocalDateTime.now());
+		Record record = new Record(ticket.getCheckinTime(), LocalDateTime.now(), null);
 		records.add(record);
 	}
 	
