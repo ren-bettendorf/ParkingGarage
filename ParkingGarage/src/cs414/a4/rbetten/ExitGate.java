@@ -1,6 +1,7 @@
 package cs414.a4.rbetten;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 
 public class ExitGate {
 	
@@ -23,13 +24,35 @@ public class ExitGate {
 		
 	}
 	
-	public void attemptCheckoutCar(Ticket ticket)
+	public boolean attemptCheckoutCar(String ticketID)
 	{
-		if( ticket.getPaymentStatus() )
+		Ticket ticket = findTicket(ticketID);
+		if( ticket != null)
 		{
-			payForTicket( ticket );
+			if( ticket.getPaymentStatus() )
+			{
+				payForTicket( ticket );
+			}
+			garage.removeCarFromGarage(ticket);
+			return true;
 		}
-		garage.removeCarFromGarage(ticket);
+		return false;
+	}
+	
+	private Ticket findTicket(String ticketID)
+	{
+		HashSet<Ticket> tickets = garage.getTickets();
+		Ticket t = null;
+		for(Ticket ticket : tickets)
+		{
+			if( ticket.getUniqueID().equals(ticketID) )
+			{
+				t = ticket;
+				break;
+			}
+		}
+		
+		return t;
 	}
 	
 }

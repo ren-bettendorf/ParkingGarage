@@ -66,8 +66,34 @@ public class ParkingGarageUI
 				
 				break;
 			case 3:
-				System.out.println("Please enter ticket number");
-				
+				System.out.println("Please enter ticket number.");
+				String ticketNumber = input.next();
+				if( garage.getExitGate().attemptCheckoutCar(ticketNumber) )
+				{
+					System.out.println("Ticket found. Please select an option to pay for ticket.");
+					System.out.println("1.. Cash Payment");
+					System.out.println("2.. Credit Payment");
+					
+					String userIn = input.next();
+					switch(userIn)
+					{
+						case "1":
+							break;
+						case "2":
+							break;
+						default:
+							System.out.println("Sorry but that isn't a valid option. Please try again.");
+					}
+					
+//					System.out.println("Exit Gate Open.");
+//					System.out.println("Driver leaves garage.");
+//					System.out.println("Exit Gate Closes.");
+//					printOccupancyInfo();
+				}
+				else
+				{
+					System.out.println("Sorry but the ticket number was not found. Please try again or ask for an Administrator.");
+				}
 				
 				break;
 			case 4: 

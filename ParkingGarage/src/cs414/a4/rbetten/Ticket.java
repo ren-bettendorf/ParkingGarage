@@ -13,6 +13,7 @@ public class Ticket {
 	public Ticket(LocalDateTime checkinTime)
 	{
 		this.checkinTime = checkinTime;
+		// Trim off all non numeric characters
 		uniqueID = checkinTime.toString().replaceAll("[^0-9]", "");
 		// Trim off the milliseconds
 		uniqueID = uniqueID.substring(0, uniqueID.length()-3);
