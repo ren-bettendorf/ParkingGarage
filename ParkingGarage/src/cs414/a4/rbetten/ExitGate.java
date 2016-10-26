@@ -6,6 +6,7 @@ import java.util.HashSet;
 
 public class ExitGate {
 	
+	RecordPayments recordPayments = new RecordPayments();
 	private String gateName;
 	private ParkingGarage garage;
 	
@@ -55,9 +56,12 @@ public class ExitGate {
 		return t;
 	}
 	
-	public void removeCarFromGarage(String ticketID)
+	public void removeCarFromGarage(String ticketID, Payment payment)
 	{
-		garage.removeCarFromGarage(findTicket(ticketID));
+		Ticket t = findTicket(ticketID);
+		garage.removeCarFromGarage(t);
+		recordPayments.addRecord(t, payment);
+		
 	}
 	
 	public double amountDueOnTicket(String ticketID) 

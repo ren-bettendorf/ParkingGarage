@@ -30,18 +30,6 @@ public class ParkingGarageUI
 		}
     }
     
-	private static void inputGarageSize()
-	{
-		do 
-    	{	
-    		while ( !input.hasNextInt() ) 
-    		{
-    			System.out.println("Sorry but that isn't a positive integer. Try again!");
-    			input.next(); 
-    		}
-    		maxOccupancy = input.nextInt();
-    	} while (maxOccupancy < 1);
-	}
 	
     @SuppressWarnings("deprecation")
 	private static void evaluateUserChoice(String choice)
@@ -77,6 +65,8 @@ public class ParkingGarageUI
 				ExitGate exit = garage.getExitGate();
 				if( exit.attemptCheckoutCar(ticketNumber) )
 				{
+
+					Payment payment = null;
 					double amountDue = exit.amountDueOnTicket(ticketNumber);
 					boolean validInput = true;
 					do
@@ -90,21 +80,11 @@ public class ParkingGarageUI
 						LocalDateTime ldt = LocalDateTime.now();
 						Date today = new Date(ldt.getYear(), ldt.getMonthValue(), ldt.getDayOfMonth());
 						double amountPaid = 0.00;
-						Payment payment;
+						
 						switch(userIn)
 						{
 							case "1":
-								do
-								{
-									System.out.println("How much cash was inserted (must be > 0 and is truncated to two decimal places)? ");
-									String temp = input.next();
-									try
-									{
-										amountPaid = Double.parseDouble(temp);
-									}catch (NumberFormatException e) {
-									    System.out.println("Sorry but there was a problem with that number. Please try again.");
-									}
-								}while(amountPaid <= 0);
+								amountPaid = getAmountUserPaid();
 								payment = new CashPayment(amountPaid, today);
 								
 								validInput = true;
@@ -117,7 +97,6 @@ public class ParkingGarageUI
 							    boolean validDate = true;
 							    do
 								{
-
 									DateFormat df = new SimpleDateFormat("MM/yyyy"); 
 								    try {
 								        System.out.println("Please enter the expiration date (MM/YYYY): ");
@@ -129,17 +108,7 @@ public class ParkingGarageUI
 								    }
 								}while( !validDate );
 								
-								do
-								{
-									System.out.println("How much cash was inserted (must be > 0 and is truncated to two decimal places)? ");
-									String temp = input.next();
-									try
-									{
-										amountPaid = Double.parseDouble(temp);
-									}catch (NumberFormatException e) {
-									    System.out.println("Sorry but there was a problem with that number. Please try again.");
-									}
-								}while(amountPaid <= 0);
+								amountPaid = getAmountUserPaid();
 								
 								payment = new CreditPayment(ccNumber, expDate, amountPaid, today);
 								
@@ -166,7 +135,7 @@ public class ParkingGarageUI
 					System.out.println("Exit Gate Open.");
 					System.out.println("Driver leaves garage.");
 					System.out.println("Exit Gate Closes.");
-					exit.removeCarFromGarage(ticketNumber);
+					exit.removeCarFromGarage(ticketNumber, payment);
 					printOccupancyInfo();
 				}
 				else
@@ -176,22 +145,31 @@ public class ParkingGarageUI
 				
 				break;
 			case "4": 
-			
+				
 				break;
 			case "5":
-			
-				break;
-			case "6":
 				System.out.println("Exiting Application...");
 				runApp = false;
 				
 				break;
 			default:
 				System.out.println("I'm sorry but something went wrong with your choice. Please try again.");
-				
 				break;
 		}
     }
+    
+    private static void inputGarageSize()
+	{
+		do 
+    	{	
+    		while ( !input.hasNextInt() ) 
+    		{
+    			System.out.println("Sorry but that isn't a positive integer. Try again!");
+    			input.next(); 
+    		}
+    		maxOccupancy = input.nextInt();
+    	} while (maxOccupancy < 1);
+	}
 	
 	private static void printOccupancyInfo()
 	{
@@ -216,9 +194,8 @@ public class ParkingGarageUI
 		System.out.println("1.. Display current availability.");
 		System.out.println("2.. Dispense a ticket.");
 		System.out.println("3.. Pay for ticket.");
-		System.out.println("4.. Administrator: Pay for lost or damaged ticket.");  
-		System.out.println("5.. Administrator Only: View usage reports.");
-		System.out.println("6.. Quit.\n");
+		System.out.println("4.. Administrator Only: View usage reports.");  
+		System.out.println("5.. Quit.\n");
 		
 		String userChoice = input.next();
 		
@@ -240,5 +217,21 @@ public class ParkingGarageUI
 		return payment;
     }
 	
+    private static double getAmountUserPaid()
+    {
+    	double amountPaid = 0;
+    	do
+		{
+			System.out.println("How much cash was inserted (must be > 0 and is truncated to two decimal places)? ");
+			String temp = input.next();
+			try
+			{
+				amountPaid = Double.parseDouble(temp);
+			}catch (NumberFormatException e) {
+			    System.out.println("Sorry but there was a problem with that number. Please try again.");
+			}
+		}while(amountPaid <= 0);
+		return amountPaid;
+    }
 	
 }

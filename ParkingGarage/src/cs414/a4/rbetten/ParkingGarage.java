@@ -9,7 +9,6 @@ public class ParkingGarage
 	private ExitGate exitGate;
 	private int maxOccupancy;
 	private int carIdentifier = 1;
-	private RecordPayments payments = new RecordPayments();
 	
 	public ParkingGarage(int maxOccu)
 	{
@@ -65,7 +64,6 @@ public class ParkingGarage
 	public void removeCarFromGarage(Ticket ticket)
 	{
 		ticketsInGarage.remove(ticket);
-		payments.addRecord(ticket);
 		
 	}
 	
