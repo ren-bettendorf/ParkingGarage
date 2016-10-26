@@ -20,14 +20,13 @@ public class RecordTest {
 		firstLDT = LocalDateTime.now();
 		secondLDT = LocalDateTime.now();
 		
-		firstRecord = new Record(firstLDT, secondLDT, null);
-		secondRecord =  new Record(firstLDT, secondLDT, null);
+		//firstRecord = new Record(firstLDT, secondLDT, null);
+		//secondRecord =  new Record(firstLDT, secondLDT, null);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void improperInstance() {
-		@SuppressWarnings("unused")
-		Record record = new Record(secondLDT, firstLDT, null);
+		//Record record = new Record(secondLDT, firstLDT, null);
 	}
 	
 	@Test

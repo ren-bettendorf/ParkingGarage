@@ -200,7 +200,6 @@ public class ParkingGarageUI
 		String userChoice = input.next();
 		
     	return userChoice;
-    	
     }
     
     private static Payment createAdminPayment(LocalDateTime ldt, double amountDue)
