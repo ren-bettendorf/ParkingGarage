@@ -18,9 +18,9 @@ public class RecordPayments {
 		records.add(record);
 	}
 	
-	public HashMap<Date, Double> getFinancialRecords(Date begin, Date end)
+	public String getFinancialRecords(Date begin, Date end)
 	{
-
+		String returnedTotals;
 		HashMap<Date, Double> dailyTotals = new HashMap<Date, Double>();
 		if(records.size() > 0)
 		{
@@ -33,10 +33,33 @@ public class RecordPayments {
 			}
 			for(Record record : records)
 			{
-				
+				Date recordDate = record.getRecordDate();
+				double recordPayment = record.getPayment().getAmountPaid();
+				if(dailyTotals.containsKey(recordDate))
+				{
+					double runningTotals = dailyTotals.get(recordDate) + recordPayment;
+					dailyTotals.replace(recordDate, runningTotals);
+				}
+				else
+				{
+					dailyTotals.put(recordDate, recordPayment);
+				}
 			}
 		}
-		return dailyTotals;
+		
+		returnedTotals = changeToLines(dailyTotals);
+		
+		return returnedTotals;
+	}
+
+	private String changeToLines(HashMap<Date, Double> dailyTotals) 
+	{
+		String ret = "";
+		for(Date day : dailyTotals.keySet())
+		{
+			ret += day + ", \t" + dailyTotals.get(day) + "\n";
+		}
+		return ret;
 	}
 	
 }
