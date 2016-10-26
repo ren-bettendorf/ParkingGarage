@@ -2,6 +2,7 @@ package cs414.a4.rbetten;
 
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.Date;
 import java.util.HashSet;
 
 public class Record 
@@ -22,6 +23,11 @@ public class Record
 	public Payment getPayment()
 	{
 		return payment;
+	}
+	
+	public Date getRecordDate()
+	{
+		return payment.getDateOfPayment();
 	}
 
 	@Override
