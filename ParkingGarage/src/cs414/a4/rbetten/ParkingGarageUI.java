@@ -43,7 +43,8 @@ public class ParkingGarageUI
     	} while (maxOccupancy < 1);
 	}
 	
-    private static void evaluateUserChoice(String choice)
+    @SuppressWarnings("deprecation")
+	private static void evaluateUserChoice(String choice)
     {
     	System.out.println("\nEVALUATING USER CHOICE: " + choice);
     	switch(choice)
@@ -146,7 +147,15 @@ public class ParkingGarageUI
 								validInput = true;
 								break;
 							case "3":
+								System.out.println("Please enter the address");
+								String userAddress = input.next();
+								System.out.println("Please entere the name");
+								String userName = input.next();
+								System.out.println("Please enter the phone number");
+								String userPhoneNumber = input.next();
 								
+								Date dateOwed = new Date(ldt.getYear(), ldt.getMonthValue(), (ldt.getDayOfMonth() + 1) % 12);
+								payment = new AdminPayment(userAddress, userName, userPhoneNumber, amountDue, dateOwed);
 								validInput = true;
 								break;
 							default:

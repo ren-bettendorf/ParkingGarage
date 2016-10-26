@@ -2,7 +2,7 @@ package cs414.a4.rbetten;
 
 import java.util.Date;
 
-public class AdminPayment
+public class AdminPayment extends Payment
 {
 	private String userAddress, userName, userPhoneNumber;
 	private Date dateOwed;
