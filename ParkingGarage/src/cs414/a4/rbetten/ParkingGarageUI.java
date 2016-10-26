@@ -1,5 +1,10 @@
 package cs414.a4.rbetten;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Scanner;
 
 public class ParkingGarageUI
@@ -68,34 +73,79 @@ public class ParkingGarageUI
 			case "3":
 				System.out.println("Please enter ticket number.");
 				String ticketNumber = input.next();
-				if( garage.getExitGate().attemptCheckoutCar(ticketNumber) )
+				ExitGate exit = garage.getExitGate();
+				if( exit.attemptCheckoutCar(ticketNumber) )
 				{
+					double amountDue = exit.amountDueOnTicket(ticketNumber);
 					boolean validInput = true;
 					do
 					{
-						System.out.println("Ticket found. Please select an option to pay for ticket.");
+						System.out.println("Ticket found. Ticket amount due is : " + amountDue);
 						System.out.println("1.. Cash Payment");
 						System.out.println("2.. Credit Payment");
+						System.out.println("3.. Need help from an Administrator.");
 						
 						String userIn = input.next();
-						
-						
+						LocalDateTime ldt = LocalDateTime.now();
+						Date today = new Date(ldt.getYear(), ldt.getMonthValue(), ldt.getDayOfMonth());
+						double amountPaid = 0.00;
 						Payment payment;
 						switch(userIn)
 						{
 							case "1":
-								System.out.println("How much cash was inserted? ");
-								String amountPaid = input.next();
-								payment = new CashPayment();
+								do
+								{
+									System.out.println("How much cash was inserted (must be > 0 and is truncated to two decimal places)? ");
+									String temp = input.next();
+									try
+									{
+										amountPaid = Double.parseDouble(temp);
+									}catch (NumberFormatException e) {
+									    System.out.println("Sorry but there was a problem with that number. Please try again.");
+									}
+								}while(amountPaid <= 0);
+								payment = new CashPayment(amountPaid, today);
 								
 								validInput = true;
 								break;
 							case "2":
 								System.out.println("Please enter the credit card number (no dashes): ");
 								String ccNumber = input.next();
-								System.out.println("Please enter the expiration date (mm/yyyy): ");
-								Date expDate = changeToDate(input.next());
-								payment = new CreditPayment(ccNumber, expDate, Date.);
+								
+							    Date expDate = null;
+							    boolean validDate = true;
+							    do
+								{
+
+									DateFormat df = new SimpleDateFormat("MM/yyyy"); 
+								    try {
+								        System.out.println("Please enter the expiration date (MM/YYYY): ");
+								        expDate = df.parse(input.next());
+								        validInput = true;
+								    } catch (ParseException e) {
+								    	System.out.println("Sorry but there was a problem with that entry. Please try again.");
+								    	validInput = false;
+								    }
+								}while( !validDate );
+								
+								do
+								{
+									System.out.println("How much cash was inserted (must be > 0 and is truncated to two decimal places)? ");
+									String temp = input.next();
+									try
+									{
+										amountPaid = Double.parseDouble(temp);
+									}catch (NumberFormatException e) {
+									    System.out.println("Sorry but there was a problem with that number. Please try again.");
+									}
+								}while(amountPaid <= 0);
+								
+								
+								payment = new CreditPayment(ccNumber, expDate, amountPaid, today);
+								
+								validInput = true;
+								break;
+							case "3":
 								
 								validInput = true;
 								break;
@@ -103,12 +153,20 @@ public class ParkingGarageUI
 								System.out.println("Sorry but that isn't a valid option. Please try again.");
 								validInput = false;
 						}
-					}while ( !validInput )
+						
+						amountDue -= amountPaid;
+					}while ( !validInput &&  amountDue > 0);
 					
-//					System.out.println("Exit Gate Open.");
-//					System.out.println("Driver leaves garage.");
-//					System.out.println("Exit Gate Closes.");
-//					printOccupancyInfo();
+					if(amountDue < 0)
+					{
+						System.out.println("You have been refunded: " + (-1 * amountDue) );
+					}
+						
+					System.out.println("Exit Gate Open.");
+					System.out.println("Driver leaves garage.");
+					System.out.println("Exit Gate Closes.");
+					exit.removeCarFromGarage(ticketNumber);
+					printOccupancyInfo();
 				}
 				else
 				{

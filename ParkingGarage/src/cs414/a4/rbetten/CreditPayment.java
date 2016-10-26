@@ -5,12 +5,12 @@ import java.util.Date;
 public class CreditPayment extends Payment
 {
 	private String cardNumber;
-	private String expirationDate;
+	private Date expirationDate;
 	
-	public CreditPayment(String cardNumber, String expirationDate, double amountPaid, Date dateOfPayment)
+	public CreditPayment(String cardNumber, Date expDate, double amountPaid, Date dateOfPayment)
 	{
 		this.cardNumber = cardNumber;
-		this.expirationDate = expirationDate;
+		this.expirationDate = expDate;
 		this.amountPaid = amountPaid;
 		this.dateOfPayment = dateOfPayment;
 	}
@@ -20,7 +20,7 @@ public class CreditPayment extends Payment
 		return cardNumber;
 	}
 	
-	public String getExpirationDate()
+	public Date getExpirationDate()
 	{
 		return expirationDate;
 	}

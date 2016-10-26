@@ -1,6 +1,7 @@
 package cs414.a4.rbetten;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.HashSet;
 
 public class ExitGate {
@@ -33,7 +34,6 @@ public class ExitGate {
 			{
 				payForTicket( ticket );
 			}
-			garage.removeCarFromGarage(ticket);
 			return true;
 		}
 		return false;
@@ -53,6 +53,22 @@ public class ExitGate {
 		}
 		
 		return t;
+	}
+	
+	public void removeCarFromGarage(String ticketID)
+	{
+		garage.removeCarFromGarage(findTicket(ticketID));
+	}
+	
+	public double amountDueOnTicket(String ticketID) 
+	{
+		Ticket t = findTicket(ticketID);
+		LocalDateTime ldt = LocalDateTime.now();
+		LocalDateTime tempDateTime = LocalDateTime.from( t.getCheckinTime() );
+		double amountDue = tempDateTime.until( ldt, ChronoUnit.HOURS);
+		
+		
+		return amountDue;
 	}
 	
 }
