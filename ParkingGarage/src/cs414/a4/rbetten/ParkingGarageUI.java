@@ -122,10 +122,10 @@ public class ParkingGarageUI
 								    try {
 								        System.out.println("Please enter the expiration date (MM/YYYY): ");
 								        expDate = df.parse(input.next());
-								        validInput = true;
+								        validDate = true;
 								    } catch (ParseException e) {
 								    	System.out.println("Sorry but there was a problem with that entry. Please try again.");
-								    	validInput = false;
+								    	validDate = false;
 								    }
 								}while( !validDate );
 								
@@ -141,21 +141,13 @@ public class ParkingGarageUI
 									}
 								}while(amountPaid <= 0);
 								
-								
 								payment = new CreditPayment(ccNumber, expDate, amountPaid, today);
 								
 								validInput = true;
 								break;
 							case "3":
-								System.out.println("Please enter the address");
-								String userAddress = input.next();
-								System.out.println("Please entere the name");
-								String userName = input.next();
-								System.out.println("Please enter the phone number");
-								String userPhoneNumber = input.next();
-								
-								Date dateOwed = new Date(ldt.getYear(), ldt.getMonthValue(), (ldt.getDayOfMonth() + 1) % 12);
-								payment = new AdminPayment(userAddress, userName, userPhoneNumber, amountDue, dateOwed);
+								payment = createAdminPayment(ldt, amountDue);
+								amountDue = 0;
 								validInput = true;
 								break;
 							default:
@@ -233,9 +225,20 @@ public class ParkingGarageUI
     	return userChoice;
     	
     }
+    
+    private static Payment createAdminPayment(LocalDateTime ldt, double amountDue)
+    {
+	    System.out.println("Please enter the address");
+		String userAddress = input.next();
+		System.out.println("Please entere the name");
+		String userName = input.next();
+		System.out.println("Please enter the phone number");
+		String userPhoneNumber = input.next();
+		
+		Date dateOwed = new Date(ldt.getYear(), ldt.getMonthValue(), (ldt.getDayOfMonth() + 1) % 12);
+		Payment payment = new AdminPayment(userAddress, userName, userPhoneNumber, amountDue, dateOwed);
+		return payment;
+    }
 	
-	private static Date changeToDate(String stringToChange)
-	{
-		return new Date();
-	}
+	
 }
