@@ -28,9 +28,21 @@ public class RecordManager
 		financialRecords.add(record);
 	}
 	
-	public String getOccupationRecords(Date begin, Date end)
+	public String getOccupationRecords(LocalDateTime begin, LocalDateTime end)
 	{
-		
+		String returnedTotals;
+		HashMap<Date, Integer> carsVisited = new HashMap<Date, Integer>();
+		if(occupationRecords.size() > 0)
+		{
+			LocalDateTime firstDay = occupationRecords.get(0).getTime();
+			LocalDateTime lastDay = occupationRecords.get(occupationRecords.size()-1).getTime();
+
+			if(firstDay.isBefore(begin) || lastDay.isAfter(end))
+			{
+				throw new IllegalArgumentException();
+			}
+			
+		}
 		return null;
 	}
 
