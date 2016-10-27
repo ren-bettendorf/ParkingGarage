@@ -1,5 +1,6 @@
 package cs414.a4.rbetten;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class CreditPayment extends Payment
@@ -7,9 +8,9 @@ public class CreditPayment extends Payment
 	private String cardNumber;
 	private Date expirationDate;
 	
-	public CreditPayment(String cardNumber, Date expDate, double amountPaid, Date dateOfPayment)
+	public CreditPayment(String cardNumber, Date expDate, double amountPaid, LocalDateTime dateOfPayment)
 	{
-		if(cardNumber.length() == 16)
+		if(cardNumber.length() != 16)
 		{
 			throw new IllegalArgumentException();
 		}

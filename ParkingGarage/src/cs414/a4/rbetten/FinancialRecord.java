@@ -1,6 +1,6 @@
 package cs414.a4.rbetten;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class FinancialRecord 
 {
@@ -22,7 +22,7 @@ public class FinancialRecord
 		return payment;
 	}
 	
-	public Date getRecordDate()
+	public LocalDateTime getRecordDate()
 	{
 		return payment.getDateOfPayment();
 	}

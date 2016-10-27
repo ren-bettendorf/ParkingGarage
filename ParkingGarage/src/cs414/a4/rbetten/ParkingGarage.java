@@ -1,10 +1,13 @@
 package cs414.a4.rbetten;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashSet;
 
 public class ParkingGarage
 {
 	private HashSet<Ticket> ticketsInGarage = new HashSet<Ticket>();
+	private RecordManager recordManager = new RecordManager();
 	private EntryGate entryGate;
 	private ExitGate exitGate;
 	private int maxOccupancy;
@@ -24,6 +27,11 @@ public class ParkingGarage
 			return true;
 		}
 		return false;
+	}
+	
+	public RecordManager getRecordManager()
+	{
+		return recordManager;
 	}
 	
 	public int getMaxCarOccupancy()
@@ -65,6 +73,24 @@ public class ParkingGarage
 	{
 		ticketsInGarage.remove(ticket);
 		
+	}
+	
+	public String runOccupationReports(Date begin, Date end)
+	{
+		LocalDateTime beginLDT = LocalDateTime.of(begin.getYear(), begin.getMonth(), begin.getDate(), 0, 0);
+
+		LocalDateTime endLDT = LocalDateTime.of(end.getYear(), end.getMonth(), end.getDate(), 0, 0);
+		return recordManager.getOccupationRecords(beginLDT, endLDT);
+		
+	}
+	
+	public String runFinancialReports(Date begin, Date end)
+	{
+
+		LocalDateTime beginLDT = LocalDateTime.of(begin.getYear(), begin.getMonth(), begin.getDate(), 0, 0);
+
+		LocalDateTime endLDT = LocalDateTime.of(end.getYear(), end.getMonth(), end.getDate(), 0, 0);
+		return recordManager.getFinancialRecords(beginLDT, endLDT);
 	}
 	
 }

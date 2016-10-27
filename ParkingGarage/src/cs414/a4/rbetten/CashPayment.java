@@ -1,10 +1,10 @@
 package cs414.a4.rbetten;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class CashPayment extends Payment
 {
-	public CashPayment(double amountPaid, Date dateOfPayment)
+	public CashPayment(double amountPaid, LocalDateTime dateOfPayment)
 	{
 		this.amountPaid = amountPaid;
 		this.dateOfPayment = dateOfPayment;

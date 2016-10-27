@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -67,7 +68,7 @@ public class ParkingGarageUI
 			{
 
 				Payment payment = null;
-				double amountDue = exit.amountDueOnTicket(ticketNumber);
+				double amountDue = exit.amountDueOnTicket(ticketNumber) + 1.00;
 				boolean validInput = true;
 
 				System.out.println("Ticket found. Ticket amount due is : " + amountDue);
@@ -77,7 +78,7 @@ public class ParkingGarageUI
 
 				String userIn = input.next();
 				LocalDateTime ldt = LocalDateTime.now();
-				Date today = new Date(ldt.getYear(), ldt.getMonthValue(), ldt.getDayOfMonth());
+				LocalDateTime today = LocalDateTime.of(ldt.getYear(), ldt.getMonthValue(), ldt.getDayOfMonth(), ldt.getHour(), 0);
 				double amountPaid = 0.00;
 
 				switch(userIn)
@@ -140,7 +141,7 @@ public class ParkingGarageUI
 				amountDue -= amountPaid;
 
 
-				if(amountDue <= 0 )
+				if(amountDue <= 0 || payment != null)
 				{
 					if(amountDue < 0)
 					{
@@ -166,7 +167,45 @@ public class ParkingGarageUI
 
 			break;
 		case "4": 
-			
+			boolean validDate = true;
+			Date begin = null;
+			DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
+			do
+			{
+				System.out.println("Please enter the beginning query date (MM/dd/yyyy): ");
+				try
+				{
+					begin = df.parse(input.next());
+					validDate = true;
+				}
+				catch(Exception e)
+				{
+					System.out.println("Sorry but that date isn't recognized.");
+					validDate = false;
+				}
+			}while ( !validDate );
+
+			Date end = null;
+			do
+			{	
+				System.out.println("Please enter the expiration date (MM/YYYY): ");
+				try
+				{
+					end = df.parse(input.next());
+					validDate = true;
+				}
+				catch(Exception e)
+				{
+
+					System.out.println("Sorry but that date isn't recognized.");
+					validDate = false;
+				}
+			}while( !validDate );
+
+
+
+			System.out.print(garage.runOccupationReports(begin, end));
+			System.out.print(garage.runFinancialReports(begin, end));
 			break;
 		case "5":
 			System.out.println("Exiting Application...");

@@ -25,6 +25,8 @@ public class EntryGate {
 		{
 			ticket = new Ticket(LocalDateTime.now());
 			garage.addCarToGarage(ticket);
+
+			garage.getRecordManager().addOccupationRecord(ticket.getCheckinTime(), CarStatus.ENTER);
 		}
 		return ticket;
 	}

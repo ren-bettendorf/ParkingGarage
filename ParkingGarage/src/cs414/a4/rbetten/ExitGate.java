@@ -5,17 +5,16 @@ import java.time.temporal.ChronoUnit;
 import java.util.HashSet;
 
 public class ExitGate {
-	
-	RecordManager recordPayments = new RecordManager();
+
 	private String gateName;
 	private ParkingGarage garage;
-	
+
 	public ExitGate(String name, ParkingGarage garage)
 	{
 		this.gateName = name;
 		this.garage = garage;
 	}
-	
+
 	public void payForTicket(Ticket ticket)
 	{
 		if( !ticket.getPaymentStatus() )
@@ -23,9 +22,9 @@ public class ExitGate {
 			// Needs to be refactored when we implement the UI
 			ticket.setPaymentStatus(true);
 		}
-		
+
 	}
-	
+
 	public boolean attemptCheckoutCar(String ticketID)
 	{
 		Ticket ticket = findTicket(ticketID);
@@ -39,7 +38,7 @@ public class ExitGate {
 		}
 		return false;
 	}
-	
+
 	private Ticket findTicket(String ticketID)
 	{
 		HashSet<Ticket> tickets = garage.getTickets();
@@ -52,27 +51,30 @@ public class ExitGate {
 				break;
 			}
 		}
-		
+
 		return t;
 	}
-	
+
 	public void removeCarFromGarage(String ticketID, Payment payment)
 	{
-		Ticket t = findTicket(ticketID);
+		RecordManager records = garage.getRecordManager();
+		Ticket t = findTicket(ticketID);		
+		records.addOccupationRecord(payment.getDateOfPayment(), CarStatus.LEAVE);
+		records.addFinancialRecord(t, payment);
 		garage.removeCarFromGarage(t);
-		recordPayments.addFinancialRecord(t, payment);
-		
+
+
 	}
-	
+
 	public double amountDueOnTicket(String ticketID) 
 	{
 		Ticket t = findTicket(ticketID);
 		LocalDateTime ldt = LocalDateTime.now();
 		LocalDateTime tempDateTime = LocalDateTime.from( t.getCheckinTime() );
 		double amountDue = tempDateTime.until( ldt, ChronoUnit.HOURS);
-		
-		
+
+
 		return amountDue;
 	}
-	
+
 }
