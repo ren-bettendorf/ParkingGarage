@@ -9,6 +9,10 @@ public class CreditPayment extends Payment
 	
 	public CreditPayment(String cardNumber, Date expDate, double amountPaid, Date dateOfPayment)
 	{
+		if(cardNumber.length() == 16)
+		{
+			throw new IllegalArgumentException();
+		}
 		this.cardNumber = cardNumber;
 		this.expirationDate = expDate;
 		this.amountPaid = amountPaid;
