@@ -5,11 +5,11 @@ import java.time.Month;
 import java.util.Date;
 import java.util.HashSet;
 
-public class Record 
+public class FinancialRecord 
 {
 	private Ticket ticket;
 	private Payment payment;
-	public Record(Ticket ticket, Payment payment)
+	public FinancialRecord(Ticket ticket, Payment payment)
 	{
 		this.ticket = ticket;
 		this.payment = payment;
@@ -32,8 +32,8 @@ public class Record
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof Record) {
-			Record rec = (Record)obj;
+		if (obj instanceof FinancialRecord) {
+			FinancialRecord rec = (FinancialRecord)obj;
 			return ( ticket.equals(rec.getTicket()) );
 		}
 		return false;

@@ -133,6 +133,7 @@ public class ParkingGarageUI
 				default:
 					System.out.println("Sorry but that isn't a valid option. Please try again.");
 					validInput = false;
+					break;
 				}
 
 				amountDue -= amountPaid;
@@ -164,7 +165,7 @@ public class ParkingGarageUI
 
 			break;
 		case "4": 
-
+			
 			break;
 		case "5":
 			System.out.println("Exiting Application...");

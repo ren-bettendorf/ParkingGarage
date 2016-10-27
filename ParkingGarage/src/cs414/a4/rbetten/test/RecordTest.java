@@ -6,13 +6,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import cs414.a4.rbetten.Record;
+import cs414.a4.rbetten.FinancialRecord;
 
 public class RecordTest {
 
 	LocalDateTime firstLDT, secondLDT;
 	
-	Record firstRecord, secondRecord;
+	FinancialRecord firstRecord, secondRecord;
 	
 	
 	@Before

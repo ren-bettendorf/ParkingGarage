@@ -1,37 +1,53 @@
 package cs414.a4.rbetten;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
-public class RecordPayments {
-	
-	private ArrayList<Record> records = new ArrayList<Record>();
-	
-	public RecordPayments()
+public class RecordManager 
+{
+
+	private ArrayList<FinancialRecord> financialRecords = new ArrayList<FinancialRecord>();
+	private ArrayList<OccupationRecord> occupationRecords = new ArrayList<OccupationRecord>();
+	//private ArrayList<>
+
+	public RecordManager()
 	{
 	}
 	
-	public void addRecord(Ticket ticket, Payment payment)
+	public void addOccupationRecord(LocalDateTime ldt, CarStatus status)
 	{
-		Record record = new Record(ticket, payment);
-		records.add(record);
+		OccupationRecord record = new OccupationRecord(ldt, status);
+		occupationRecords.add(record);
+	}
+
+	public void addFinancialRecord(Ticket ticket, Payment payment)
+	{
+		FinancialRecord record = new FinancialRecord(ticket, payment);
+		financialRecords.add(record);
 	}
 	
+	public String getOccupationRecords(Date begin, Date end)
+	{
+		
+		return null;
+	}
+
 	public String getFinancialRecords(Date begin, Date end)
 	{
 		String returnedTotals;
 		HashMap<Date, Double> dailyTotals = new HashMap<Date, Double>();
-		if(records.size() > 0)
+		if(financialRecords.size() > 0)
 		{
-			Date firstDay = records.get(0).getRecordDate();
-			Date lastDay = records.get(records.size()-1).getRecordDate();
-			
+			Date firstDay = financialRecords.get(0).getRecordDate();
+			Date lastDay = financialRecords.get(financialRecords.size()-1).getRecordDate();
+
 			if(firstDay.before(begin) || lastDay.after(end))
 			{
 				throw new IllegalArgumentException();
 			}
-			for(Record record : records)
+			for(FinancialRecord record : financialRecords)
 			{
 				Date recordDate = record.getRecordDate();
 				double recordPayment = record.getPayment().getAmountPaid();
@@ -46,9 +62,9 @@ public class RecordPayments {
 				}
 			}
 		}
-		
+
 		returnedTotals = changeToLines(dailyTotals);
-		
+
 		return returnedTotals;
 	}
 
@@ -61,5 +77,5 @@ public class RecordPayments {
 		}
 		return ret;
 	}
-	
+
 }
