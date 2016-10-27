@@ -103,7 +103,8 @@ public class ParkingGarageUI
 					do
 					{
 						DateFormat df = new SimpleDateFormat("MM/yyyy"); 
-						try {
+						try 
+						{
 							System.out.println("Please enter the expiration date (MM/YYYY): ");
 							expDate = df.parse(input.next());
 							validDate = true;
