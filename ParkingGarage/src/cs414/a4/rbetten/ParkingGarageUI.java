@@ -66,7 +66,7 @@ public class ParkingGarageUI
 			{
 
 				Payment payment = null;
-				double amountDue = exit.amountDueOnTicket(ticketNumber) + 1.00;
+				double amountDue = exit.amountDueOnTicket(ticketNumber);
 				boolean validInput = true;
 
 				System.out.println("Ticket found. Ticket amount due is : " + amountDue);

@@ -66,8 +66,6 @@ public class ExitGate {
 		records.addOccupationRecord(payment.getDateOfPayment(), CarStatus.LEAVE);
 		records.addFinancialRecord(t, payment);
 		garage.removeCarFromGarage(t);
-
-
 	}
 
 	public double amountDueOnTicket(String ticketID) 
@@ -75,7 +73,7 @@ public class ExitGate {
 		Ticket t = findTicket(ticketID);
 		LocalDateTime ldt = LocalDateTime.now();
 		LocalDateTime tempDateTime = LocalDateTime.from( t.getCheckinTime() );
-		double amountDue = tempDateTime.until( ldt, ChronoUnit.HOURS);
+		double amountDue = tempDateTime.until( ldt, ChronoUnit.HOURS) + 1.00;
 
 
 		return amountDue;

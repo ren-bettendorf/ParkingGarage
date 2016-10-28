@@ -6,10 +6,8 @@ import java.util.HashMap;
 
 public class RecordManager 
 {
-
 	private ArrayList<FinancialRecord> financialRecords = new ArrayList<FinancialRecord>();
 	private ArrayList<OccupationRecord> occupationRecords = new ArrayList<OccupationRecord>();
-	//private ArrayList<>
 
 	public RecordManager()
 	{
@@ -19,12 +17,6 @@ public class RecordManager
 	{
 		OccupationRecord record = new OccupationRecord(ldt, status);
 		occupationRecords.add(record);
-	}
-
-	public void addFinancialRecord(Ticket ticket, Payment payment)
-	{
-		FinancialRecord record = new FinancialRecord(ticket, payment);
-		financialRecords.add(record);
 	}
 	
 	public String getOccupationRecords(LocalDateTime begin, LocalDateTime end)
@@ -78,6 +70,12 @@ public class RecordManager
 		
 		returnedTotals = changeOccupationToLines(carsVisited, carsLeft);
 		return returnedTotals;
+	}
+	
+	public void addFinancialRecord(Ticket ticket, Payment payment)
+	{
+		FinancialRecord record = new FinancialRecord(ticket, payment);
+		financialRecords.add(record);
 	}
 
 	public String getFinancialRecords(LocalDateTime begin, LocalDateTime end)
