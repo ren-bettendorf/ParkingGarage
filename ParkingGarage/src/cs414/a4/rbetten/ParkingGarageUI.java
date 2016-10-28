@@ -4,7 +4,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -32,7 +31,6 @@ public class ParkingGarageUI
 	}
 
 
-	@SuppressWarnings("deprecation")
 	private static void evaluateUserChoice(String choice)
 	{
 		System.out.println("\nEVALUATING USER CHOICE: " + choice);
@@ -85,15 +83,18 @@ public class ParkingGarageUI
 				{
 				case "1":
 					amountPaid = getAmountUserPaid();
-					try
+					do
 					{
-						payment = new CashPayment(amountPaid, today);
-					}catch(Exception e)
-					{
-						System.out.println("Sorry there was a problem with your payment");
-					}
-
-					validInput = true;
+						try
+						{
+							payment = new CashPayment(amountPaid, today);
+							validInput = true;
+						}catch(Exception e)
+						{
+							System.out.println("Sorry there was a problem with your payment");
+							validInput = false;
+						}
+					}while(!validInput );
 					break;
 				case "2":
 					System.out.println("Please enter the credit card number (no dashes): ");
@@ -125,12 +126,10 @@ public class ParkingGarageUI
 						System.out.println("There was a problem with your payment");
 					}
 
-					validInput = true;
 					break;
 				case "3":
 					payment = createAdminPayment(ldt, amountDue);
 					amountDue = 0;
-					validInput = true;
 					break;
 				default:
 					System.out.println("Sorry but that isn't a valid option. Please try again.");
@@ -262,6 +261,7 @@ public class ParkingGarageUI
 		return userChoice;
 	}
 
+	@SuppressWarnings("deprecation")
 	private static Payment createAdminPayment(LocalDateTime ldt, double amountDue)
 	{
 		System.out.println("Please enter the address");

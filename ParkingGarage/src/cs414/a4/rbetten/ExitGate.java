@@ -19,10 +19,14 @@ public class ExitGate {
 	{
 		if( !ticket.getPaymentStatus() )
 		{
-			// Needs to be refactored when we implement the UI
 			ticket.setPaymentStatus(true);
 		}
 
+	}
+	
+	public String getGateName()
+	{
+		return gateName;
 	}
 
 	public boolean attemptCheckoutCar(String ticketID)

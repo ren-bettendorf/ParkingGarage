@@ -1,14 +1,11 @@
 package cs414.a4.rbetten.test;
 
-import static org.junit.Assert.*;
-
 import java.time.LocalDateTime;
 import java.util.Date;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import cs414.a4.rbetten.CashPayment;
 import cs414.a4.rbetten.CreditPayment;
 
 public class CreditPaymentTest {
@@ -17,6 +14,7 @@ public class CreditPaymentTest {
 	public void setUp() throws Exception {
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test(expected = IllegalArgumentException.class)
 	public void testNegativeAmount()
 	{
@@ -25,6 +23,7 @@ public class CreditPaymentTest {
 		new CreditPayment(cardNumber, date, -1.00, LocalDateTime.now());
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Test(expected = IllegalArgumentException.class)
 	public void testBadCCNumber()
 	{

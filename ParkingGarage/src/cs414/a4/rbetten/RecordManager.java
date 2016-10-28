@@ -2,7 +2,6 @@ package cs414.a4.rbetten;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 public class RecordManager 

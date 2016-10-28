@@ -75,6 +75,7 @@ public class ParkingGarage
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	public String runOccupationReports(Date begin, Date end)
 	{
 		LocalDateTime beginLDT = LocalDateTime.of(begin.getYear(), begin.getMonth(), begin.getDate(), 0, 0);
@@ -84,6 +85,7 @@ public class ParkingGarage
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	public String runFinancialReports(Date begin, Date end)
 	{
 

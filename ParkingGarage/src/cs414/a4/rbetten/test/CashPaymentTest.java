@@ -1,7 +1,5 @@
 package cs414.a4.rbetten.test;
 
-import static org.junit.Assert.*;
-
 import java.time.LocalDateTime;
 
 import org.junit.Before;

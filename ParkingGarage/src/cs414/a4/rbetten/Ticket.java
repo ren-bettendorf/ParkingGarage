@@ -1,7 +1,6 @@
 package cs414.a4.rbetten;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 
 public class Ticket {
 	
