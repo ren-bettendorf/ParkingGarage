@@ -248,7 +248,7 @@ public class ParkingGarageUI
 
 	private static String displayUserChoiceMenu()
 	{
-		System.out.println("\nGARAGE VACANCY STATUS " + garage.checkGarageSpace());
+		System.out.println("\nGARAGE VACANCY STATUS " + !garage.checkGarageSpace());
 		System.out.println("Please select one of the following options:");
 
 		System.out.println("1.. Display current availability.");

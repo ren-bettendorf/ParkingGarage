@@ -12,7 +12,11 @@ public class CreditPayment extends Payment
 	{
 		if(cardNumber.length() != 16)
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Bad Credit Card Number");
+		}
+		if(amountPaid <= 0)
+		{
+			throw new IllegalArgumentException("Amount paid can't be less than 0");
 		}
 		this.cardNumber = cardNumber;
 		this.expirationDate = expDate;
