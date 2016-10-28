@@ -16,13 +16,18 @@ public class ParkingGarageUI
 
 	public static void main(String[] args) 
 	{
+		// Welcome message
 		System.out.println("Parking Garage Application has started. ");
 		System.out.println("Before we officially begin though we need to get the size of the Garage.");
 		System.out.println("It is important this is a positive integer!");
 
+		// Method to get the Parking Garage size
 		inputGarageSize();
 
+		// Creates Parking Garage to be used
 		garage = new ParkingGarage(maxOccupancy);
+
+		// Main App Loop
 		while(runApp)
 		{
 			String userChoice = displayUserChoiceMenu();
@@ -41,6 +46,7 @@ public class ParkingGarageUI
 
 			break;
 		case "2":
+			// Check if space for another car
 			if( !garage.checkGarageSpace() )
 			{
 				System.out.println("Space is available. Dispensing ticket");
@@ -62,6 +68,8 @@ public class ParkingGarageUI
 			System.out.println("Please enter ticket number.");
 			String ticketNumber = input.next();
 			ExitGate exit = garage.getExitGate();
+
+			// Check to see if the car has paid for their ticket
 			if( exit.attemptCheckoutCar(ticketNumber) )
 			{
 
@@ -69,6 +77,7 @@ public class ParkingGarageUI
 				double amountDue = exit.amountDueOnTicket(ticketNumber);
 				boolean validInput = true;
 
+				// User given option to pay with cash, card, or admin problems
 				System.out.println("Ticket found. Ticket amount due is : " + amountDue);
 				System.out.println("1.. Cash Payment");
 				System.out.println("2.. Credit Payment");
@@ -82,26 +91,26 @@ public class ParkingGarageUI
 				switch(userIn)
 				{
 				case "1":
+
+					// Figures out how much user has paid
 					amountPaid = getAmountUserPaid();
-					do
+					// If user paid a negative amount catch the error
+					try
 					{
-						try
-						{
-							payment = new CashPayment(amountPaid, today);
-							validInput = true;
-						}catch(Exception e)
-						{
-							System.out.println("Sorry there was a problem with your payment");
-							validInput = false;
-						}
-					}while(!validInput );
+						payment = new CashPayment(amountPaid, today);
+					}catch(IllegalArgumentException e)
+					{
+						System.out.println("Sorry there was a problem with your payment");
+					}
 					break;
 				case "2":
+					// Collect credit card number
 					System.out.println("Please enter the credit card number (no dashes): ");
 					String ccNumber = input.next();
 
 					Date expDate = null;
 					boolean validDate = true;
+					// Loop to get a correct date in correct Format
 					do
 					{
 						DateFormat df = new SimpleDateFormat("MM/yyyy"); 
@@ -117,6 +126,7 @@ public class ParkingGarageUI
 					}while( !validDate );
 
 					amountPaid = getAmountUserPaid();
+					// If user paid a negative amount catch the error
 					try
 					{
 						payment = new CreditPayment(ccNumber, expDate, amountPaid, today);
@@ -139,9 +149,9 @@ public class ParkingGarageUI
 
 				amountDue -= amountPaid;
 
-
 				if(amountDue <= 0 || payment != null)
 				{
+					// Refund if paid more than necessary
 					if(amountDue < 0)
 					{
 						System.out.println("You have been refunded: " + (-1 * amountDue) );
@@ -169,6 +179,8 @@ public class ParkingGarageUI
 			boolean validDate = true;
 			Date begin = null;
 			DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
+
+			// Loop to get a correct date in correct Format
 			do
 			{
 				System.out.println("Please enter the beginning query date (MM/dd/yyyy): ");
@@ -185,6 +197,8 @@ public class ParkingGarageUI
 			}while ( !validDate );
 
 			Date end = null;
+
+			// Loop to get a correct date in correct Format
 			do
 			{	
 				System.out.println("Please enter the expiration date (MM/YYYY): ");
@@ -202,11 +216,12 @@ public class ParkingGarageUI
 			}while( !validDate );
 
 
-
+			// Print out the reports!
 			System.out.print(garage.runOccupationReports(begin, end));
 			System.out.print(garage.runFinancialReports(begin, end));
 			break;
 		case "5":
+			// Leave app
 			System.out.println("Exiting Application...");
 			runApp = false;
 
@@ -217,8 +232,12 @@ public class ParkingGarageUI
 		}
 	}
 
+	/**
+	 * Gets the garage size
+	 */
 	private static void inputGarageSize()
 	{
+		// Loop to get a correct date in correct Format
 		do 
 		{	
 			while ( !input.hasNextInt() ) 
@@ -230,6 +249,9 @@ public class ParkingGarageUI
 		} while (maxOccupancy < 1);
 	}
 
+	/**
+	 * Print out Occupancy Info
+	 */
 	private static void printOccupancyInfo()
 	{
 		System.out.println("");
@@ -245,6 +267,10 @@ public class ParkingGarageUI
 		}
 	}
 
+	/**
+	 * Displays choices user can make and gets the user input
+	 * @return userChoice
+	 */
 	private static String displayUserChoiceMenu()
 	{
 		System.out.println("\nGARAGE VACANCY STATUS " + !garage.checkGarageSpace());
@@ -261,6 +287,12 @@ public class ParkingGarageUI
 		return userChoice;
 	}
 
+	/**
+	 * Creates an admin payment
+	 * @param ldt
+	 * @param amountDue
+	 * @return
+	 */
 	@SuppressWarnings("deprecation")
 	private static Payment createAdminPayment(LocalDateTime ldt, double amountDue)
 	{
@@ -276,6 +308,10 @@ public class ParkingGarageUI
 		return payment;
 	}
 
+	/**
+	 * Gets the amount the user pays by asking user how much they paid
+	 * @return
+	 */
 	private static double getAmountUserPaid()
 	{
 		double amountPaid = 0;

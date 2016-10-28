@@ -15,6 +15,15 @@ public class ExitGate {
 		this.garage = garage;
 	}
 
+	public String getGateName()
+	{
+		return gateName;
+	}
+
+	/**
+	 * Checks if the ticket hasn't been paid for and if it has pays for the ticket
+	 * @param ticket Ticket's payment status to be checked
+	 */
 	public void payForTicket(Ticket ticket)
 	{
 		if( !ticket.getPaymentStatus() )
@@ -23,12 +32,12 @@ public class ExitGate {
 		}
 
 	}
-	
-	public String getGateName()
-	{
-		return gateName;
-	}
 
+	/**
+	 * Attempts to pay for ticket and starts checkout process
+	 * @param ticketID uniqueID of ticket to be found
+	 * @return boolean true if car checked out, false otherwise
+	 */
 	public boolean attemptCheckoutCar(String ticketID)
 	{
 		Ticket ticket = findTicket(ticketID);
@@ -43,6 +52,11 @@ public class ExitGate {
 		return false;
 	}
 
+	/**
+	 * Searches garage for the ticket
+	 * @param ticketID uniqueID to be found
+	 * @return t Ticket if found otherwise null
+	 */
 	private Ticket findTicket(String ticketID)
 	{
 		HashSet<Ticket> tickets = garage.getTickets();
@@ -59,6 +73,11 @@ public class ExitGate {
 		return t;
 	}
 
+	/**
+	 * Removes the car from the garage system while recording exit and payment
+	 * @param ticketID uniqueID to be found
+	 * @param payment payment the car used
+	 */
 	public void removeCarFromGarage(String ticketID, Payment payment)
 	{
 		RecordManager records = garage.getRecordManager();
@@ -68,6 +87,11 @@ public class ExitGate {
 		garage.removeCarFromGarage(t);
 	}
 
+	/**
+	 * Calculates the amount needed to pay for parking
+	 * @param ticketID uniqueID to be found
+	 * @return double amount due for parking
+	 */
 	public double amountDueOnTicket(String ticketID) 
 	{
 		Ticket t = findTicket(ticketID);

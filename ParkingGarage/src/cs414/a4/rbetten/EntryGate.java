@@ -18,6 +18,10 @@ public class EntryGate {
 		return gateName;
 	}
 	
+	/**
+	 * Checks in a car if ther is space in the garage
+	 * @return Ticket ticket from checking in car
+	 */
 	public Ticket checkinCar()
 	{
 		Ticket ticket = null;

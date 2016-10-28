@@ -1,0 +1,302 @@
+commit 32a50835834baa155d525b9665266908d3b043e0
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Thu Oct 27 20:08:49 2016 -0700
+
+    Added final sequence diagram from creately
+
+commit 92eddd3aa91e2144c313a6c2cb1507ab5914ce7a
+Author: Ren Bettendorf <rbetten@Tannas-MacBook-Pro.local>
+Date:   Thu Oct 27 19:51:43 2016 -0700
+
+    Final Push of Unit Tests
+
+commit d43b0eb6cf4fcd7cd171a0d25728fe06c61a8c95
+Author: Ren Bettendorf <rbetten@Tannas-MacBook-Pro.local>
+Date:   Thu Oct 27 19:02:30 2016 -0700
+
+    Updated tests for ExitGate
+
+commit 01aee4c055331c437c44e726ead7be8921b346e4
+Author: Ren Bettendorf <rbetten@Tannas-MacBook-Pro.local>
+Date:   Thu Oct 27 18:43:43 2016 -0700
+
+    More changes to Unit Tests
+
+commit d63e6f82398e51b9bafc39cfe37e21454bcd8dc6
+Author: Ren Bettendorf <rbetten@Tannas-MacBook-Pro.local>
+Date:   Thu Oct 27 17:43:44 2016 -0700
+
+    Updated Unit Tests
+
+commit f72a35f2c13e217d7a4bc28ed767a8f6e33872ae
+Author: Ren Bettendorf <rbetten@Tannas-MacBook-Pro.local>
+Date:   Thu Oct 27 16:46:39 2016 -0700
+
+    Reports are working
+
+commit 90afe9db3d97eca7792ea3cf10140845bffff203
+Author: Ren Bettendorf <rbetten@Tannas-MacBook-Pro.local>
+Date:   Wed Oct 26 20:35:30 2016 -0700
+
+    Done with stuffffss
+
+commit 70e2652ce54f32d9e7b5b99a32d1bed1926c6f9f
+Author: Ren Bettendorf <rbetten@Tannas-MacBook-Pro.local>
+Date:   Wed Oct 26 20:23:57 2016 -0700
+
+    Does anyone actually read these?
+
+commit 77f3c629fba303fcf487da07adbd03593c1114b5
+Author: Ren Bettendorf <rbetten@Tannas-MacBook-Pro.local>
+Date:   Wed Oct 26 19:41:38 2016 -0700
+
+    Split records into Financial and Occupation
+
+commit 795df6935c6407c8f710bb81aa0f3d421a0994bc
+Merge: ee9bd00 53c97f0
+Author: rebettendorf <ren.bettendorf@karlstorz.com>
+Date:   Wed Oct 26 17:15:28 2016 -0700
+
+    Merge branch 'master' of https://github.com/renaldorini/ParkingGarage
+
+commit ee9bd00454dae3779a60e419fa22054eeec68dd6
+Author: rebettendorf <ren.bettendorf@karlstorz.com>
+Date:   Wed Oct 26 17:15:10 2016 -0700
+
+    Added second sequence
+
+commit 53c97f0a8147090dd63a42361412ef5a48e43e39
+Author: Ren Bettendorf <rbetten@Tannas-MacBook-Pro.local>
+Date:   Wed Oct 26 15:41:14 2016 -0700
+
+    Finished Financial Records
+
+commit fa82387305b68ad550a59554933bbf82d56ac568
+Merge: 5fde61f 82e17a7
+Author: Ren Bettendorf <rbetten@Tannas-MacBook-Pro.local>
+Date:   Wed Oct 26 15:26:00 2016 -0700
+
+    WORK
+
+commit 5fde61ffe9b2ded78db038e94090497ae057d06e
+Author: Ren Bettendorf <rbetten@Tannas-MacBook-Pro.local>
+Date:   Wed Oct 26 15:20:52 2016 -0700
+
+    Added beginning functionality for Reports being generated
+
+commit 82e17a7049a0f9d068cbc21d032016e4845196ed
+Author: rebettendorf <ren.bettendorf@karlstorz.com>
+Date:   Wed Oct 26 14:43:02 2016 -0700
+
+    Adjusted to make prettier
+
+commit a077c566f9913867dcac47233e584603482f44d3
+Author: rebettendorf <ren.bettendorf@karlstorz.com>
+Date:   Wed Oct 26 14:41:53 2016 -0700
+
+    Added first sequence diagram
+
+commit 5bdad456c4832c0df37ff0cbcd147e4602b56a13
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Tue Oct 25 22:13:49 2016 -0700
+
+    Another commit
+
+commit f3cd8a5561c64327754d0f058d7778cfd30030ba
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Tue Oct 25 21:41:16 2016 -0700
+
+    Another commit
+
+commit d9ce80a6cd82f5901ed9e9d5975152f351d43894
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Tue Oct 25 20:32:15 2016 -0700
+
+    Refactored payments
+
+commit 945435f2f31080fa170b453d55c118cbc36ae51a
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Tue Oct 25 20:22:43 2016 -0700
+
+    Created Admin Payment option for lost or invalid tickets
+
+commit 7d4b4464baa33ee5e2f79901fc201c598c9bf4d4
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Tue Oct 25 20:05:17 2016 -0700
+
+    Finished Cash and Credit Payment options. Removed Car because unused
+
+commit e85b3599723087c4c8c3a7aea4e95102202ec78f
+Author: rebettendorf <ren.bettendorf@karlstorz.com>
+Date:   Tue Oct 25 16:12:25 2016 -0700
+
+    Another commit
+
+commit 2bb737acd4077a422ced842c6f445360be8a534c
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Tue Oct 25 13:21:50 2016 -0700
+
+    Added functionality for finding ticket for exiting gate
+
+commit e9744aa7d3a585cddb02090699b28e154f4d04eb
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Tue Oct 25 12:36:08 2016 -0700
+
+    Removed Car class and am now dealing strictly with tickets because it is easier to manage
+
+commit 66c141ac6972518d49867f472cf55cb3f7bb867a
+Author: rebettendorf <ren.bettendorf@karlstorz.com>
+Date:   Tue Oct 25 11:03:17 2016 -0700
+
+    Added UI functionality for checking in car to garage with vacancy or full
+
+commit a952899d8ee0ef402041a43a681624fc810a7731
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Tue Oct 25 08:40:45 2016 -0700
+
+    Pushing so I can work on this at work
+
+commit dc5f86f1a42b2b7b60522aaa5d94b7d3adc83188
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Mon Oct 24 23:06:27 2016 -0700
+
+    Moved tests to test folder and removed all Swing based functions.
+
+commit ec68cdc68ed490c09b738b12da83f99288ccae13
+Author: rebettendorf <ren.bettendorf@karlstorz.com>
+Date:   Mon Oct 24 15:42:55 2016 -0700
+
+    Added AdminPayment for lost and invalid tickets
+
+commit b32dfb67b39ac4655e646e36fdfa722bbcbb205c
+Author: rebettendorf <ren.bettendorf@karlstorz.com>
+Date:   Mon Oct 24 14:31:30 2016 -0700
+
+    Added EntryGateController, options for Payments, and gate status
+
+commit 17f20a9ea966df6a3275f0e85b9556ad60797ccd
+Author: rebettendorf <ren.bettendorf@karlstorz.com>
+Date:   Mon Oct 24 11:49:30 2016 -0700
+
+    Updated Error in Entry and added message for when garage is full
+
+commit 4e07ef4ad0bce673b7061c23ebb421b78cc44a88
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Sun Oct 23 20:53:56 2016 -0700
+
+    Another update... YAY
+
+commit e1abff7208149ea286cabd4af469dbe0f62d3814
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Sun Oct 23 20:10:23 2016 -0700
+
+    Redid Ticket to create uniqueID, UI now displays uniqueID for user as well
+
+commit 1b804f0c6bc6d2f2f78e8e500023e084dd23a62b
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Sun Oct 23 19:33:37 2016 -0700
+
+    Added initial functionality for EntranceGate
+
+commit 110bff3725c660a8ebd9b642211612082b503446
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Sun Oct 23 18:35:34 2016 -0700
+
+    Added initial UI elements
+
+commit 0c23ddb18bb7b4806def9ba8135ffe8b0cd8def6
+Author: Ren Bettendorf <rbetten@Tannas-MacBook-Pro.local>
+Date:   Sat Oct 22 18:49:31 2016 -0700
+
+    Final changes to the Entry and Exit gates
+
+commit f3453f7dc683bbcbd0906c39ca44c0ce833ab678
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Sat Oct 22 17:50:49 2016 -0700
+
+    Refactored a bunch of classes due to bad domain model
+
+commit 28c39c9207bc7a2af8e6340fb4a722e1f47ce9b5
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Fri Oct 21 21:38:27 2016 -0700
+
+    Added more functionality for the ParkingGarage and EntryGate
+
+commit 12dcd4f0d9b8506a8feadee94b9d6e222ad452f2
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Fri Oct 21 18:28:49 2016 -0700
+
+    Added couple more changes
+
+commit 067abae81292bf79f4d2f109db7e0a290b9172c2
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Fri Oct 21 11:56:07 2016 -0700
+
+    Added a TestAll junit test suite and updated Record and Ticket for unit tests
+
+commit fe125aae35f1042a9d1f163d20f1d5b4c8d87dd0
+Author: Ren Bettendorf <rbetten@Tannas-MacBook-Pro.local>
+Date:   Fri Oct 21 11:03:29 2016 -0700
+
+    Pushing so I can change to desktop
+
+commit 23545af1da4aaf5f8c87a12750ebe2a9febb3cee
+Author: Ren Bettendorf <rbetten@Tannas-MacBook-Pro.local>
+Date:   Thu Oct 20 20:13:34 2016 -0700
+
+    Added rest of initial classes and tests
+
+commit e2260690df450e59d619e70a265a6f2c845a0d1d
+Author: Ren Bettendorf <rbetten@Tannas-MacBook-Pro.local>
+Date:   Thu Oct 20 20:02:46 2016 -0700
+
+    Added initial Car and CarTest
+
+commit 974f4853cfeb750f883d3afc8e5a26faa95fa900
+Author: Ren Bettendorf <rbetten@Tannas-MacBook-Pro.local>
+Date:   Thu Oct 20 19:52:01 2016 -0700
+
+    Removed accidental file added in
+
+commit a6c96f9130a611dbd1457c697a745748c61c67b9
+Author: Ren Bettendorf <rbetten@Tannas-MacBook-Pro.local>
+Date:   Thu Oct 20 19:41:21 2016 -0700
+
+    Added initial Ticket and TicketTest classes
+
+commit 2525d4bd4d636a67f1b3eb9ffae058a110b26d09
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Tue Oct 18 21:24:05 2016 -0700
+
+    Updated Domain Model to include Car with assoc to ExitGate, EntryGate, and Ticket. Need to move some of the methods for the UI from Exit and Entry to UI layer
+
+commit 024c49e13b24eee60bb8f825edaaf2e6ab74f10b
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Tue Oct 18 20:29:09 2016 -0700
+
+    Initial Domain Model and System Test Cases
+
+commit 54a4379af33ffa83440e6fdae0ad0ce2a4135c09
+Merge: 040e55c 0e13df2
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Mon Oct 17 12:51:36 2016 -0700
+
+    Merge branch 'master' of https://github.com/renaldorini/ParkingGarage
+
+commit 040e55cf3bcdf6423d622ea4369578e8f3828381
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Mon Oct 17 12:50:02 2016 -0700
+
+    Initial commit
+
+commit 69a4efd0b28f659a43f19ac8bb09b939ce64a36d
+Author: Ren Bettendorf <Ren Bettendorf>
+Date:   Mon Oct 17 12:44:02 2016 -0700
+
+    Initial commit for assignment 4
+
+commit 0e13df20351c8e1a22ad9584252d236f31922bda
+Author: Ren Bettendorf <ren@bettendorfapplications.com>
+Date:   Mon Oct 17 12:38:44 2016 -0700
+
+    Initial commit

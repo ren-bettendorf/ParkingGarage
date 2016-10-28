@@ -75,6 +75,12 @@ public class ParkingGarage
 		
 	}
 	
+	/**
+	 * Creates the Occupation Report for a period of dates
+	 * @param begin beginning date
+	 * @param end ending date
+	 * @return Occupation Report
+	 */
 	@SuppressWarnings("deprecation")
 	public String runOccupationReports(Date begin, Date end)
 	{
@@ -85,6 +91,12 @@ public class ParkingGarage
 		
 	}
 	
+	/**
+	 * Creates the Financial Report for a period of dates
+	 * @param begin beginning date
+	 * @param end ending date
+	 * @return Financial Report
+	 */
 	@SuppressWarnings("deprecation")
 	public String runFinancialReports(Date begin, Date end)
 	{

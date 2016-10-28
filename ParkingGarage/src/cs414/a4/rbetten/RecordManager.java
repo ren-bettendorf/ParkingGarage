@@ -23,29 +23,46 @@ public class RecordManager
 		return financialRecords.size();
 	}
 	
+	/**
+	 * Add Occupation Report to RecordManager
+	 * @param ldt time to add to report
+	 * @param status whether car was entering or leaving
+	 */
 	public void addOccupationRecord(LocalDateTime ldt, CarStatus status)
 	{
 		OccupationRecord record = new OccupationRecord(ldt, status);
 		occupationRecords.add(record);
 	}
 	
+	/**
+	 * Queries OccupationRecords over a time frame
+	 * @param begin starting time frame
+	 * @param end ending time frame
+	 * @return Occupation Record
+	 */
 	public String getOccupationRecords(LocalDateTime begin, LocalDateTime end)
 	{
 		String returnedTotals = "";
 		HashMap<LocalDateTime, Integer> carsVisited = new HashMap<LocalDateTime, Integer>();
 		HashMap<LocalDateTime, Integer> carsLeft = new HashMap<LocalDateTime, Integer>();
+		
+		// Check to make sure that records exist
 		if(occupationRecords.size() > 0)
 		{
 
 			int numVisited = 0;
 			int numLeft = 0;
+			
+			// Check to all records to see if they fall in time frame
 			for(OccupationRecord record : occupationRecords)
 			{
+				// Check to see if record is not in query time frame
 				LocalDateTime ldt = record.getTime();
 				if(ldt.isBefore(begin) || ldt.isAfter(end))
 				{
 					continue;
 				}
+				
 				CarStatus status = record.getCarStatus();
 				if( status == CarStatus.ENTER)
 				{
@@ -76,30 +93,47 @@ public class RecordManager
 			}
 		}
 		
+		// Change HashMaps to String
 		returnedTotals = changeOccupationToLines(carsVisited, carsLeft);
 		return returnedTotals;
 	}
 	
+	/**
+	 * Add Financial Report to RecordManager
+	 * @param ticket Ticket paid for
+	 * @param payment Payment used to pay for ticket
+	 */
 	public void addFinancialRecord(Ticket ticket, Payment payment)
 	{
 		FinancialRecord record = new FinancialRecord(ticket, payment);
 		financialRecords.add(record);
 	}
 
+	/**
+	 * Queries Financial Records over a time frame
+	 * @param begin
+	 * @param end
+	 * @return
+	 */
 	public String getFinancialRecords(LocalDateTime begin, LocalDateTime end)
 	{
 		String returnedTotals;
 		HashMap<LocalDateTime, Double> dailyTotals = new HashMap<LocalDateTime, Double>();
+		
+		// Check to make sure that records exist
 		if(financialRecords.size() > 0)
 		{
 			for(FinancialRecord record : financialRecords)
 			{
+				// Check to see if record is not in query time frame
 				LocalDateTime recordDate = record.getRecordDate();
 				if(recordDate.isBefore(begin) || recordDate.isAfter(end))
 				{
 					continue;
 				}
 				double recordPayment = record.getPayment().getAmountPaid();
+				
+				// Check to see if we have a record of this day already and adds to otherwise creates a new entry
 				if(dailyTotals.containsKey(recordDate))
 				{
 					double runningTotals = dailyTotals.get(recordDate) + recordPayment;
@@ -112,11 +146,18 @@ public class RecordManager
 			}
 		}
 
+		// Change HashMaps to String
 		returnedTotals = changeFinancialToLines(dailyTotals);
 
 		return returnedTotals;
 	}
 	
+	/**
+	 * Converts HashMaps to Strings for display
+	 * @param entered
+	 * @param left
+	 * @return
+	 */
 	private String changeOccupationToLines(HashMap<LocalDateTime, Integer> entered, HashMap<LocalDateTime, Integer> left)
 	{
 		String ret = "Cars Entered Garage: \nTimestamp\t\tTotal Entered Garage\n";
@@ -133,6 +174,11 @@ public class RecordManager
 		return ret;
 	}
 
+	/**
+	 * Converts HashMaps to Strings for display
+	 * @param dailyTotals
+	 * @return
+	 */
 	private String changeFinancialToLines(HashMap<LocalDateTime, Double> dailyTotals) 
 	{
 		String ret = "Financial Records: \n\nDay\tTotal Made\n";

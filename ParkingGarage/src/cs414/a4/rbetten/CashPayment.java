@@ -6,6 +6,7 @@ public class CashPayment extends Payment
 {
 	public CashPayment(double amountPaid, LocalDateTime dateOfPayment)
 	{
+		// Disallow a negative payment
 		if(amountPaid <= 0)
 		{
 			throw new IllegalArgumentException("Amount paid can't be less than 0");
