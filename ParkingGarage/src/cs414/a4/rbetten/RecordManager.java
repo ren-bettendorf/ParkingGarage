@@ -13,6 +13,16 @@ public class RecordManager
 	{
 	}
 	
+	public int getOccupationRecordsSize()
+	{
+		return occupationRecords.size();
+	}
+	
+	public int getFinancialRecordsSize()
+	{
+		return financialRecords.size();
+	}
+	
 	public void addOccupationRecord(LocalDateTime ldt, CarStatus status)
 	{
 		OccupationRecord record = new OccupationRecord(ldt, status);
@@ -26,15 +36,13 @@ public class RecordManager
 		HashMap<LocalDateTime, Integer> carsLeft = new HashMap<LocalDateTime, Integer>();
 		if(occupationRecords.size() > 0)
 		{
-			LocalDateTime firstDay = occupationRecords.get(0).getTime();
-			LocalDateTime lastDay = occupationRecords.get(occupationRecords.size()-1).getTime();
 
 			int numVisited = 0;
 			int numLeft = 0;
 			for(OccupationRecord record : occupationRecords)
 			{
 				LocalDateTime ldt = record.getTime();
-				if(ldt.isBefore(firstDay) || ldt.isAfter(lastDay))
+				if(ldt.isBefore(begin) || ldt.isAfter(end))
 				{
 					continue;
 				}
@@ -84,13 +92,10 @@ public class RecordManager
 		HashMap<LocalDateTime, Double> dailyTotals = new HashMap<LocalDateTime, Double>();
 		if(financialRecords.size() > 0)
 		{
-			LocalDateTime firstDay = financialRecords.get(0).getRecordDate();
-			LocalDateTime lastDay = financialRecords.get(financialRecords.size()-1).getRecordDate();
-
 			for(FinancialRecord record : financialRecords)
 			{
 				LocalDateTime recordDate = record.getRecordDate();
-				if(recordDate.isBefore(firstDay) || recordDate.isAfter(lastDay))
+				if(recordDate.isBefore(begin) || recordDate.isAfter(end))
 				{
 					continue;
 				}

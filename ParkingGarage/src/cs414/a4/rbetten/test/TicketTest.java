@@ -30,6 +30,7 @@ public class TicketTest {
 	{
 		Assert.assertTrue( ticket1.equals(ticket2) );
 	}
+	// Test doesn't pass when running TestAll.java but does when you run TicketTest.java. Don't know why....
 	@Test
 	public void notEqualTickets()
 	{
