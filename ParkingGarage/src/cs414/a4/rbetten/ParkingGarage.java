@@ -84,9 +84,9 @@ public class ParkingGarage
 	@SuppressWarnings("deprecation")
 	public String runOccupationReports(Date begin, Date end)
 	{
-		LocalDateTime beginLDT = LocalDateTime.of(begin.getYear(), begin.getMonth(), begin.getDate(), 0, 0);
+		LocalDateTime beginLDT = LocalDateTime.of(begin.getYear() + 1900, begin.getMonth() + 1, begin.getDate(), 0, 0);
 
-		LocalDateTime endLDT = LocalDateTime.of(end.getYear(), end.getMonth(), end.getDate(), 0, 0);
+		LocalDateTime endLDT = LocalDateTime.of(end.getYear() + 1900, end.getMonth() + 1, end.getDate(), 0, 0);
 		return recordManager.getOccupationRecords(beginLDT, endLDT);
 		
 	}
@@ -101,9 +101,9 @@ public class ParkingGarage
 	public String runFinancialReports(Date begin, Date end)
 	{
 
-		LocalDateTime beginLDT = LocalDateTime.of(begin.getYear(), begin.getMonth(), begin.getDate(), 0, 0);
+		LocalDateTime beginLDT = LocalDateTime.of(begin.getYear() + 1900, begin.getMonth() + 1, begin.getDate(), 0, 0);
 
-		LocalDateTime endLDT = LocalDateTime.of(end.getYear(), end.getMonth(), end.getDate(), 0, 0);
+		LocalDateTime endLDT = LocalDateTime.of(end.getYear() + 1900, end.getMonth() + 1, end.getDate(), 0, 0);
 		return recordManager.getFinancialRecords(beginLDT, endLDT);
 	}
 	

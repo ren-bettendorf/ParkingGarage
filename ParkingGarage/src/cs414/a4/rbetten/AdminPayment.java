@@ -1,14 +1,14 @@
 package cs414.a4.rbetten;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class AdminPayment extends Payment
 {
 	private String userAddress, userName, userPhoneNumber;
-	private Date dateOwed;
+	private LocalDateTime dateOwed;
 	private double amountOwed;
 	
-	public AdminPayment(String userAddress, String userName, String userPhoneNumber, double amountOwed, Date dateOwed)
+	public AdminPayment(String userAddress, String userName, String userPhoneNumber, double amountOwed, LocalDateTime dateOwed)
 	{
 		this.userAddress = userAddress;
 		this.userName = userName;
@@ -22,7 +22,7 @@ public class AdminPayment extends Payment
 		return amountOwed;
 	}
 	
-	public Date getDateOwed()
+	public LocalDateTime getDateOwed()
 	{
 		return dateOwed;
 	}
