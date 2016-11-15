@@ -18,6 +18,9 @@ public class CreditPayment extends Payment
 		if(amountPaid <= 0)
 		{
 			throw new IllegalArgumentException("Amount paid can't be less than 0");
+		}else if(cardNumber == null || expDate == null || dateOfPayment == null)
+		{
+			throw new IllegalArgumentException("Null field");
 		}
 		this.cardNumber = cardNumber;
 		this.expirationDate = expDate;

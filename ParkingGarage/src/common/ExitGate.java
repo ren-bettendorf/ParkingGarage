@@ -4,14 +4,14 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.HashSet;
 
-import server.ParkingGarage;
+import server.ParkingGarageImpl;
 
 public class ExitGate {
 
 	private String gateName;
-	private ParkingGarage garage;
+	private ParkingGarageImpl garage;
 
-	public ExitGate(String name, ParkingGarage garage)
+	public ExitGate(String name, ParkingGarageImpl garage)
 	{
 		this.gateName = name;
 		this.garage = garage;

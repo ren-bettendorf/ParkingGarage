@@ -10,6 +10,9 @@ public class CashPayment extends Payment
 		if(amountPaid <= 0)
 		{
 			throw new IllegalArgumentException("Amount paid can't be less than 0");
+		}else if(dateOfPayment == null)
+		{
+			throw new IllegalArgumentException("Date is null");
 		}
 		this.amountPaid = amountPaid;
 		this.dateOfPayment = dateOfPayment;

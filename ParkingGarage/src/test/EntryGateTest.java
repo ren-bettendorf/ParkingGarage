@@ -5,13 +5,13 @@ import org.junit.Test;
 
 import common.EntryGate;
 import common.Ticket;
-import server.ParkingGarage;
+import server.ParkingGarageImpl;
 
 import org.junit.Assert;
 
 public class EntryGateTest 
 {
-	ParkingGarage garage = new ParkingGarage(1);
+	ParkingGarageImpl garage = new ParkingGarageImpl(1);
 	EntryGate entryGate;
 	Ticket t;
 	

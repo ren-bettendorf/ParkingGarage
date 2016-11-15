@@ -11,11 +11,11 @@ import common.CashPayment;
 import common.EntryGate;
 import common.RecordManager;
 import common.Ticket;
-import server.ParkingGarage;
+import server.ParkingGarageImpl;
 
 public class RecordManagerTest 
 {
-	ParkingGarage garage = new ParkingGarage(10);
+	ParkingGarageImpl garage = new ParkingGarageImpl(10);
 	EntryGate entryGate = garage.getEntranceGate();
 	RecordManager recordManager = garage.getRecordManager();
 	@Before

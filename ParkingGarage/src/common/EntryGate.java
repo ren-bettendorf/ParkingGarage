@@ -2,14 +2,14 @@ package common;
 
 import java.time.LocalDateTime;
 
-import server.ParkingGarage;
+import server.ParkingGarageImpl;
 
 public class EntryGate {
 	
 	private String gateName;
-	private ParkingGarage garage;
+	private ParkingGarageImpl garage;
 	
-	public EntryGate(String name, ParkingGarage garage)
+	public EntryGate(String name, ParkingGarageImpl garage)
 	{
 		this.gateName = name;
 		this.garage = garage;

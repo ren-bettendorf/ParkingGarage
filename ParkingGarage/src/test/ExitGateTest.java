@@ -11,11 +11,11 @@ import common.EntryGate;
 import common.ExitGate;
 import common.Payment;
 import common.Ticket;
-import server.ParkingGarage;
+import server.ParkingGarageImpl;
 
 public class ExitGateTest {
 	
-	ParkingGarage garage = new ParkingGarage(10);
+	ParkingGarageImpl garage = new ParkingGarageImpl(10);
 	ExitGate exitGate;
 	EntryGate entryGate;
 	Ticket ticketGood, ticketBad;
