@@ -138,6 +138,7 @@ public class ParkingGarageUI
 					catch(Exception e)
 					{
 						System.out.println("There was a problem with your payment");
+						amountPaid= 0;
 					}
 
 					break;
@@ -152,7 +153,7 @@ public class ParkingGarageUI
 
 				amountDue -= amountPaid;
 
-				if(amountDue <= 0 || payment != null)
+				if(amountDue <= 0 && payment != null)
 				{
 					// Refund if paid more than necessary
 					if(amountDue < 0)
@@ -204,7 +205,7 @@ public class ParkingGarageUI
 			// Loop to get a correct date in correct Format
 			do
 			{	
-				System.out.println("Please enter the expiration date (MM/YYYY): ");
+				System.out.println("Please enter the expiration date (MM/dd/YYYY): ");
 				try
 				{
 					end = (LocalDateTime) df.parse(input.nextLine());
@@ -297,9 +298,10 @@ public class ParkingGarageUI
 	 */
 	private static Payment createAdminPayment(LocalDateTime ldt, double amountDue)
 	{
+		input.nextLine();
 		System.out.println("Please enter the address");
 		String userAddress = input.nextLine();
-		System.out.println("Please entere the name");
+		System.out.println("Please enter the name");
 		String userName = input.nextLine();
 		System.out.println("Please enter the phone number");
 		String userPhoneNumber = input.nextLine();

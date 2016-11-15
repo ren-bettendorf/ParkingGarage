@@ -87,9 +87,15 @@ public class ParkingGarage
 	 */
 	public String runOccupationReports(LocalDateTime begin, LocalDateTime end)
 	{
+<<<<<<< HEAD:ParkingGarage/src/server/ParkingGarage.java
 		LocalDateTime beginLDT = LocalDateTime.of(begin.getYear(), begin.getMonth(), begin.getDayOfMonth(), 0, 0);
 
 		LocalDateTime endLDT = LocalDateTime.of(end.getYear(), end.getMonth(), end.getDayOfMonth(), 0, 0);
+=======
+		LocalDateTime beginLDT = LocalDateTime.of(begin.getYear() + 1900, begin.getMonth() + 1, begin.getDate(), 0, 0);
+
+		LocalDateTime endLDT = LocalDateTime.of(end.getYear() + 1900, end.getMonth() + 1, end.getDate(), 0, 0);
+>>>>>>> c54d15fa9ac6a9dd234dc7f72a2fc583a5588218:ParkingGarage/src/cs414/a4/rbetten/ParkingGarage.java
 		return recordManager.getOccupationRecords(beginLDT, endLDT);
 		
 	}
@@ -104,7 +110,13 @@ public class ParkingGarage
 	{
 		LocalDateTime beginLDT = LocalDateTime.of(begin.getYear(), begin.getMonth(), begin.getDayOfMonth(), 0, 0);
 
+<<<<<<< HEAD:ParkingGarage/src/server/ParkingGarage.java
 		LocalDateTime endLDT = LocalDateTime.of(end.getYear(), end.getMonth(), end.getDayOfMonth(), 0, 0);
+=======
+		LocalDateTime beginLDT = LocalDateTime.of(begin.getYear() + 1900, begin.getMonth() + 1, begin.getDate(), 0, 0);
+
+		LocalDateTime endLDT = LocalDateTime.of(end.getYear() + 1900, end.getMonth() + 1, end.getDate(), 0, 0);
+>>>>>>> c54d15fa9ac6a9dd234dc7f72a2fc583a5588218:ParkingGarage/src/cs414/a4/rbetten/ParkingGarage.java
 		return recordManager.getFinancialRecords(beginLDT, endLDT);
 	}
 	
